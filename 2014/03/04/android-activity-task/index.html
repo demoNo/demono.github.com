@@ -1,0 +1,732 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
+
+
+
+
+  <meta name="keywords" content="Activity,Android,LanchMode," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.3" />
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    analytics: {
+      google: 'UA-28040601-2'
+    },
+    sidebar: 'hide'
+  };
+</script>
+
+
+
+
+  <title> （转）Android activity task相关 // Yohan's chat </title>
+</head>
+
+<body>
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">Yohan's chat</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<div class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/">
+            <i class="menu-item-icon icon-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            <i class="menu-item-icon icon-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            <i class="menu-item-icon icon-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            <i class="menu-item-icon icon-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            <i class="menu-item-icon icon-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+</div>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              （转）Android activity task相关
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2014-03-04
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/Android/">Android</a>
+
+              
+              
+                ， 
+              
+
+            
+              <a href="/categories/Android/Java/">Java</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2014/03/04/android-activity-task/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/04/android-activity-task/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <p><em>转自csdn <a href="http://blog.csdn.net/liuhe688/article/details/6761337" target="_blank" rel="external">http://blog.csdn.net/liuhe688/article/details/6761337</a>。</em></p>
+<blockquote>
+<p>古人學問無遺力，少壯工夫老始成。紙上得來終覺淺，絕知此事要躬行。南宋.陸遊《冬夜讀書示子聿(yù)》</p>
+</blockquote>
+<p>软件行业也是一样，多少前辈不遗余力的奋斗才出现了软件行业的繁荣的景象，其中已有不少成为大师级人物。今天我们站在伟人的肩膀上，自然会有不少的优势，但不要忘了，要在对技术的认知方面有所提升，仍需我们去实践，去实践。</p>
+<a id="more"></a>
+<p>今天我们来讲一下Activity的task相关内容。</p>
+<p>上次我们讲到Activity的四种启动模式的时候，已经了解到一些关于task的技术，今天我再向大家介绍一下。task是一个具有栈结构的容器，可以放置多个Activity实例。启动一个应用，系统就会为之创建一个task，来放置根Activity；默认情况下，一个Activity启动另一个Activity时，两个Activity是放置在同一个task中的，后者被压入前者所在的task栈，当用户按下后退键，后者从task被弹出，前者又显示在幕前，特别是启动其他应用中的Activity时，两个Activity对用户来说就好像是属于同一个应用；系统task和task之间是互相独立的，当我们运行一个应用时，按下Home键回到主屏，启动另一个应用，这个过程中，之前的task被转移到后台，新的task被转移到前台，其根Activity也会显示到幕前，过了一会之后，在此按下Home键回到主屏，再选择之前的应用，之前的task会被转移到前台，系统仍然保留着task内的所有Activity实例，而那个新的task会被转移到后台，如果这时用户再做后退等动作，就是针对该task内部进行操作了。</p>
+<p>我们今天就讲一下和task相关的知识，主要分一下几点：</p>
+<ol>
+<li><p>Activity的affinity(亲和力)</p>
+</li>
+<li><p>Intent几种常见的flags</p>
+</li>
+<li><p><activity>与task相关属性</activity></p>
+</li>
+</ol>
+<h1 id="affinity：">affinity：</h1><p>task对于Activity来说就好像它的身份证一样，可以告诉所在的task，自己属于这个task中的一员；拥有相同affinity的多个Activity理论同属于一个task，task自身的affinity决定于根Activity的affinity值。affinity在什么场合应用呢？1.根据affinity重新为Activity选择宿主task（与allowTaskReparenting属性配合工作）；2.启动一个Activity过程中Intent使用了<code>FLAG_ACTIVITY_NEW_TASK</code>标记，根据affinity查找或创建一个新的具有对应affinity的task。我们会在后面进行详细讲解。</p>
+<p>默认情况下，一个应用内的所有Activity都具有相同的affinity，都是从Application（参考<application>的taskAffinity属性）继承而来，而Application默认的affinity是<manifest>中的包名，我们可以为<application>设置taskAffinity属性值，这样可以应用到<application>下的所有<activity>，也可以单独为某个Activity设置taskAffinity。例如：在系统自带的Browser中，package为com.android.browser，但是<application>却自定义一个taskAffinity属性值：</application></activity></application></application></manifest></application></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">application</span> <span class="attribute">android:name</span>=<span class="value">"Browser"</span></span><br><span class="line">	<span class="attribute">android:label</span>=<span class="value">"@string/application_name"</span></span><br><span class="line">	<span class="attribute">android:icon</span>=<span class="value">"@drawable/ic_launcher_browser"</span></span><br><span class="line">	<span class="attribute">android:backupAgent</span>=<span class="value">".BrowserBackupAgent"</span></span><br><span class="line">	<span class="attribute">android:taskAffinity</span>=<span class="value">"android.task.browser"</span> &gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="Intent几种常见的flags：">Intent几种常见的flags：</h1><p>在android.content.Intent中定义了若干个flags，其中最重要的有以下几个：</p>
+<h2 id="1-FLAG_ACTIVITY_NEW_TASK：">1.<code>FLAG_ACTIVITY_NEW_TASK</code>：</h2><p>当Intent对象包含这个标记时，系统会寻找或创建一个新的task来放置目标Activity，寻找时依据目标Activity的taskAffinity属性进行匹配，如果找到一个task的taskAffinity与之相同，就将目标Activity压入此task中，如果查找无果，则创建一个新的task，并将该task的taskAffinity设置为目标Activity的taskActivity，将目标Activity放置于此task。注意，如果同一个应用中Activity的taskAffinity都使用默认值或都设置相同值时，应用内的Activity之间的跳转使用这个标记是没有意义的，因为当前应用task就是目标Activity最好的宿主。下面我们会通过实例进行演示这个特性：</p>
+<p>我们新建两个项目，分别命名为appA和appB，并且分别创建FirstActivity和SecondActivity，我们准备让appB中的FirstActivity跳转到appA的SecondActivity。appA中的SecondActivity配置如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">activity</span> <span class="attribute">android:name</span>=<span class="value">".SecondActivity"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">intent-filter</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">action</span> <span class="attribute">android:name</span>=<span class="value">"android.intent.action.APP_A_SECOND_ACTIVITY"</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">category</span> <span class="attribute">android:name</span>=<span class="value">"android.intent.category.DEFAULT"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="title">intent-filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">activity</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>然后，在appB中的FirstActivity跳转代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="string">"android.intent.action.APP_A_SECOND_ACTIVITY"</span>);</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
+<p>我们要演示几个步骤：</p>
+<ol>
+<li><p>在appB中的FirstActivity点击按钮跳转到appA中的SecondActivity；</p>
+</li>
+<li><p>按Home键回到主屏，在主选单中再次启动appB；</p>
+</li>
+<li><p>按Home键回到主屏，在主选单中启动appA。演示过程如图所示：</p>
+</li>
+</ol>
+<p><img src="http://media.tumblr.com/e938448f9a1d474492bc32bb499e4f9f/tumblr_inline_momh3gLCry1qz4rgp.png" alt=""></p>
+<p><img src="http://media.tumblr.com/95022946cab4dcc1696547480ba3248f/tumblr_inline_momh56mSIb1qz4rgp.png" alt=""></p>
+<p><strong>再次启动appB应用：</strong></p>
+<p><img src="http://media.tumblr.com/95022946cab4dcc1696547480ba3248f/tumblr_inline_momh56mSIb1qz4rgp.png" alt=""></p>
+<p><strong>启动appA应用：</strong></p>
+<p><img src="http://media.tumblr.com/47bcdce1090c218149b2cd8115746e12/tumblr_inline_momhb1eU5b1qz4rgp.png" alt=""></p>
+<p>我们发现在从appB跳转到appA的SecondActivity之后，SecondActivity实例好像是嵌入到了appB中，但是不影响appA的正常运行，这种关系如下图所示：</p>
+<p><img src="http://media.tumblr.com/45ea002ddf753378c5a359fe32a0c74b/tumblr_inline_momhc0NWGK1qz4rgp.png" alt=""></p>
+<p>然后我们修改一下跳转的代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = <span class="keyword">new</span></span><br><span class="line">Intent(<span class="string">"android.intent.action.APP_A_SECOND_ACTIVITY"</span>);</span><br><span class="line">intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
+<p>我们加上了<code>FLAG_NEW_TASK</code>标记，再来看一下演示结果：</p>
+<p><img src="http://media.tumblr.com/22acc8099b027b4743f142c6da0a8402/tumblr_inline_momhii0HOW1qz4rgp.png" alt=""></p>
+<p><img src="http://media.tumblr.com/9bb24b3510f03077c9ef4aab4e26e945/tumblr_inline_momhkpMtYE1qz4rgp.png" alt=""></p>
+<p><strong>再次启动appB：</strong></p>
+<p><img src="http://media.tumblr.com/22acc8099b027b4743f142c6da0a8402/tumblr_inline_momhmd56Q31qz4rgp.png" alt=""></p>
+<p><strong>启动appA：</strong></p>
+<p><img src="http://media.tumblr.com/9bb24b3510f03077c9ef4aab4e26e945/tumblr_inline_momhog4VLc1qz4rgp.png" alt=""></p>
+<p>我们看到差别了吧，当我们再次启动appB时已经看不到刚才启动的appA中的SecondActivity，而启动appA时却直接看到了，说明这个SecondActivity实例并不在appB的task内，而是创建了一个task，这个task的affinity就是SecondActivity默认的affinity，由于appA的SecondActivity的affinity是从Application继承而来，所以当appA启动时会直接找到这个task，而不是创建新的task。我们看一下解析图：</p>
+<p><img src="http://media.tumblr.com/a33375ae6260ca23fd518553af5faa87/tumblr_inline_momhpap11L1qz4rgp.png" alt=""></p>
+<h2 id="2-FLAG_ACTIVITY_CLEAR_TOP：">2.<code>FLAG_ACTIVITY_CLEAR_TOP</code>：</h2><p>当Intent对象包含这个标记时，如果在栈中发现存在Activity实例，则清空这个实例之上的Activity，使其处于栈顶。例如：我们的FirstActivity跳转到SecondActivity，SecondActivity跳转到ThirdActivity，而ThirdActivity又跳到SecondActivity，那么ThirdActivity实例将被弹出栈，使SecondActivity处于栈顶，显示到幕前，栈内只剩下FirstActivity和SecondActivity。这个SecondActivity既可以在onNewIntent()中接收到传来的Intent，也可以把自己销毁之后重新启动来接受这个Intent。在使用默认的“standard”启动模式下，如果没有在Intent使用到<code>FLAG_ACTIVITY_SINGLE_TOP</code>标记，那么它将关闭后重建，如果使用了这个<code>FLAG_ACTIVITY_SINGLE_TOP</code>标记，则会使用已存在的实例；对于其他启动模式，无需再使用<code>FLAG_ACTIVITY_SINGLE_TOP</code>，它都将使用已存在的实例，Intent会被传递到这个实例的onNewIntent()中。</p>
+<p>下面我们来验证一下这个过程：</p>
+<p>首先，Activity启动模式都按照默认值“standard”。从FirstActivity跳转到SecondActivity，SecondActivity实例如下：</p>
+<p><img src="http://media.tumblr.com/d3647f54ffffcd7290c5bd476ef01b64/tumblr_inline_momhr6IKO31qz4rgp.png" alt=""></p>
+<p>从ThirdActivity跳转到SecondActivity时，跳转代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, SecondActivity.class);</span><br><span class="line">intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
+<p>然后跳转后SecondActivity实例如下：</p>
+<p><img src="http://media.tumblr.com/f512346412058e13a179ce5525c22484/tumblr_inline_momhseTKYK1qz4rgp.png" alt=""></p>
+<p>从序列号可以看到这两个实例是不同的，证明它是经过了销毁和重新的过程。</p>
+<p>然后我们把ThirdActivity中的跳转代码添加<code>FLAG_ACTIVITY_SINGLE_TOP</code>标记：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, SecondActivity.class);</span><br><span class="line">intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |Intent.FLAG_ACTIVITY_SINGLE_TOP);</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
+<p>两次实例均如下图所示：</p>
+<p><img src="http://media.tumblr.com/347c05ab4577c7a55031af1cf2e22ddc/tumblr_inline_momhtdVp4p1qz4rgp.png" alt=""></p>
+<p>如果我们不想添加<code>FLAG_ACTIVITY_SINGLE_TOP</code>，那么把SecondActivity的启动模式改为“standard”之外的三种即可，效果和上面一样，都不会创建新的实例。</p>
+<h2 id="3-FLAG_ACTIVITY_SINGLE_TOP：">3.<code>FLAG_ACTIVITY_SINGLE_TOP</code>：</h2><p>当task中存在目标Activity实例并且位于栈的顶端时，不再创建一个新的，直接利用这个实例。我们在上边的例子中也有讲到。</p>
+<h2 id="4-FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET：">4.<code>FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET</code>：</h2><p>如果一个Intent中包含此属性，则它转向的那个Activity以及在那个Activity其上的所有Activity都会在task重置时被清除出task。当我们将一个后台的task重新回到前台时，系统会在特定情况下为这个动作附带一个<code>FLAG_ACTIVITY_RESET_TASK_IF_NEEDED</code>标记，意味着必要时重置task，这时<code>FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET</code>就会生效。经过测试发现，对于一个处于后台的应用，如果在主选单点击应用，这个动作中含有<code>FLAG_ACTIVITY_RESET_TASK_IF_NEEDED</code>标记，长按Home键，然后点击最近记录，这个动作不含<code>FLAG_ACTIVITY_RESET_TASK_IF_NEEDED</code>标记,所以前者会清除，后者不会。关于这个标记，可以下图示之：</p>
+<p><img src="http://media.tumblr.com/273b4b0304a69dcaf1d526ad03dd9850/tumblr_inline_momhudGCqS1qz4rgp.png" alt=""></p>
+<p>这个标记对于应用存在分割点的情况会非常有用。比如我们在应用主界面要选择一个图片，然后我们启动了图片浏览界面，但是把这个应用从后台恢复到前台时，为了避免让用户感到困惑，我们希望用户仍然看到主界面，而不是图片浏览界面，这个时候我们就要在转到图片浏览界面时的Intent中加入此标记。</p>
+<h2 id="5-FLAG_ACTIVITY_RESET_TASK_IF_NEEDED：">5.<code>FLAG_ACTIVITY_RESET_TASK_IF_NEEDED</code>：</h2><p>这个标记在以下情况下会生效：</p>
+<ol>
+<li><p>启动Activity时创建新的task来放置Activity实例；</p>
+</li>
+<li><p>已存在的task被放置于前台。系统会根据affinity对指定的task进行重置操作，task会压入某些Activity实例或移除某些Activity实例。</p>
+</li>
+</ol>
+<p>我们结合上面的<code>CLEAR_WHEN_TASK_RESET</code>可以加深理解。</p>
+<h1 id="的task相关属性"><activity>的task相关属性</activity></h1><p>在<activity>中定义了几个常见的task相关属性，它们分别代表了task内部不同的行为特征，我们就来逐个介绍一下：</activity></p>
+<h2 id="1-android:allowTaskReparenting">1.android:allowTaskReparenting</h2><p>这个属性用来标记一个Activity实例在当前应用退居后台后，是否能从启动它的那个task移动到有共同affinity的task，“true”表示可以移动，“false”表示它必须呆在当前应用的task中，默认值为false。如果一个这个Activity的<activity>元素没有设定此属性，设定在<application>上的此属性会对此Activity起作用。例如在一个应用中要查看一个web页面，在启动系统浏览器Activity后，这个Activity实例和当前应用处于同一个task，当我们的应用退居后台之后用户再次从主选单中启动应用，此时这个Activity实例将会重新宿主到Browser应用的task内，在我们的应用中将不会再看到这个Activity实例，而如果此时启动Browser应用，就会发现，第一个界面就是我们刚才打开的web页面，证明了这个Activity实例确实是宿主到了Browser应用的task内。我们就来结合实例演示一下这个过程：</application></activity></p>
+<p>首先，在appB的FirstActivity中，我们将跳转动作做以下改动：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Intent viewIntent = <span class="keyword">new</span> Intent(Intent.ACTION_VIEW, Uri.parse(<span class="string">"http://www.google.com.hk"</span>));</span><br><span class="line">startActivity(viewIntent);</span><br></pre></td></tr></table></figure>
+<p>进入appB时的界面：</p>
+<p><img src="http://media.tumblr.com/795eda7518979debb518002db07ead4f/tumblr_inline_momhvlmKie1qz4rgp.png" alt=""></p>
+<p>启动web界面之后：</p>
+<p><img src="http://media.tumblr.com/a200644ebd6b0d737dfd538355c1ab02/tumblr_inline_momhw6gdtf1qz4rgp.png" alt=""></p>
+<p>然后我们按Home键，是当前应用退居后台，我们回到主选单，重新启动appB，界面如下：</p>
+<p><img src="http://media.tumblr.com/795eda7518979debb518002db07ead4f/tumblr_inline_momhvlmKie1qz4rgp.png" alt=""></p>
+<p>此时我们在主选单中启动Browser应用，出现在我们眼前的界面是这样的：</p>
+<p><img src="http://media.tumblr.com/a200644ebd6b0d737dfd538355c1ab02/tumblr_inline_momhw6gdtf1qz4rgp.png" alt=""></p>
+<p>以上这种行为也证明了我们前面的论断，为了更清楚的说明问题，也为了让大家自己可以验证，下面我们要再次演示一下appB和appA的启动过程：</p>
+<p>对于appA，在上面的基础上，不用修改其他地方，只需为SecondActivity的<activity>元素添加一个属性，如下：</activity></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">activity</span> <span class="attribute">android:name</span>=<span class="value">".SecondActivity"</span> <span class="attribute">android:allowTaskReparenting</span>=<span class="value">"true"</span>&gt;</span></span><br><span class="line">...</span><br><span class="line"><span class="tag">&lt;/<span class="title">activity</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>然后，在appB中的FirstActivity跳转代码改为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="string">"android.intent.action.APP_A_SECOND_ACTIVITY"</span>);</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
+<p>我们启动appB，看到一下界面：</p>
+<p><img src="http://media.tumblr.com/b2c79790e99bcaea6597d057fac15073/tumblr_inline_momhyoX9ta1qz4rgp.png" alt=""></p>
+<p>然后点击按钮，跳转到appA中的SecondActivity，界面如下：</p>
+<p><img src="http://media.tumblr.com/0d1a317bda5ab149e37c3ed9d6917120/tumblr_inline_momhzcpTMd1qz4rgp.png" alt=""></p>
+<p>此时appB中的FirstActivity和appA中的SecondActivity处于同一个task中taskid为28，然后我们按下Home键，在主选单中再次启动appB，我们发现appA的SecondActivity不见了，我们看到的是：</p>
+<p><img src="http://media.tumblr.com/f3f06db7298795dc003366c8e6fea6f9/tumblr_inline_momi0z9Q4m1qz4rgp.png" alt=""></p>
+<p>然后我们启动appA，这是我们不会看到它的FirstActivity，而是看到了它的SecondActivity：</p>
+<p><img src="http://media.tumblr.com/1e874326276eea3b26e3963dcb1186d2/tumblr_inline_momi1o6siU1qz4rgp.png" alt=""></p>
+<p>通常两个应用分别有自己的task，它们的taskid肯定不同，但这里的SecondActivity却显示taskid与appB相同，我们想一下也许就明白了，原来它是appB迁徙过来的，再启动appA时并未生成任何新的Activity实例。这个时候如果我们按下后退键，appA就会立即退出，证明了此时appA的task里只有一个Activity实例，也就是这个SecondActivity实例。</p>
+<p>需要注意的是，如果appB退居后台之后，没有再次启动appB，而是直接启动appA，将不会出现以上现象。重新宿主的动作发生在appB再次启动的过程中。</p>
+<p>android:allowReparenting的效果图如下：</p>
+<p><img src="http://media.tumblr.com/2e3ef7383975ce7c80d94d71ad54e3b3/tumblr_inline_momi2nwMuC1qz4rgp.png" alt=""></p>
+<h2 id="2-android:alwaysRetainTaskState">2.android:alwaysRetainTaskState</h2><p>这个属性用来标记应用的task是否保持原来的状态，“true”表示总是保持，“false”表示不能够保证，默认为“false”。此属性只对task的根Activity起作用，其他的Activity都会被忽略。</p>
+<p>默认情况下，如果一个应用在后台呆的太久例如30分钟，用户从主选单再次选择该应用时，系统就会对该应用的task进行清理，除了根Activity，其他Activity都会被清除出栈，但是如果在根Activity中设置了此属性之后，用户再次启动应用时，仍然可以看到上一次操作的界面。</p>
+<p>这个属性对于一些应用非常有用，例如Browser应用程序，有很多状态，比如打开很多的tab，用户不想丢失这些状态，使用这个属性就极为恰当。</p>
+<h2 id="3-android:clearTaskOnLaunch">3.android:clearTaskOnLaunch</h2><p>这个属性用来标记是否从task清除除根Activity之外的所有的Activity，“true”表示清除，“false”表示不清除，默认为“false”。同样，这个属性也只对根Activity起作用，其他的Activity都会被忽略。</p>
+<p>如果设置了这个属性为“true”，每次用户重新启动这个应用时，都只会看到根Activity，task中的其他Activity都会被清除出栈。如果我们的应用中引用到了其他应用的Activity，这些Activity设置了allowTaskReparenting属性为“true”，则它们会被重新宿主到有共同affinity的task中。</p>
+<p>无图无真相，我们就来以实例演示一下这个过程，我们首先修改appB的根Activity的<activity>元素，如下：</activity></p>
+<pre><code class="xml"><span class="tag">&lt;<span class="title">activity</span> <span class="attribute">android:name</span>=<span class="value">".FirstActivity"</span> <span class="attribute">android:clearTaskOnLaunch</span>=<span class="value">"true"</span>&gt;</span>
+...
+<span class="tag">&lt;/<span class="title">activity</span>&gt;</span>
+</code></pre>
+<p>FristActivity界面如下：</p>
+<p><img src="http://media.tumblr.com/58562165dcbbd4dc07f188ce0bc9f8c9/tumblr_inline_momi3zvU1H1qz4rgp.png" alt=""></p>
+<p>然后我们让FirstActivity跳转到SecondActivity，结果如下：</p>
+<p><img src="http://media.tumblr.com/df8c82f6a4e0fdfcd25aa6b13c6e75db/tumblr_inline_momi66Z94X1qz4rgp.png" alt=""></p>
+<p>然后我们按Home键回到主界面，再次启动appB，我们看到以下结果：</p>
+<p><img src="http://media.tumblr.com/25c3e2328f6f101ee448df318b30afc1/tumblr_inline_momi6uUMSC1qz4rgp.png" alt=""></p>
+<p>我们看到，再次启动appB时，我们只能看到FirstActivity界面，此时在FirstActivity之上的所有Activity都已经被清除出栈。示意图如下：</p>
+<p><img src="http://media.tumblr.com/e6493e65912fafc577a42c2442658274/tumblr_inline_momi7kX6Ev1qz4rgp.png" alt=""></p>
+<h2 id="4-android:finishOnTaskLaunch">4.android:finishOnTaskLaunch</h2><p>这个属性和android:allowReparenting属性相似，不同之处在于allowReparenting属性是重新宿主到有共同affinity的task中，而finishOnTaskLaunch属性是销毁实例。如果这个属性和android:allowReparenting都设定为“true”，则这个属性胜出。</p>
+<p>以上就是今天总结的内容，这些都是常用的知识，除此之外还有很多等着我们去探索，继续努力。</p>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Activity/"> #Activity </a>
+          
+            <a href="/tags/Android/"> #Android </a>
+          
+            <a href="/tags/LanchMode/"> #LanchMode </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/03/04/activity-singleInstance/">Activity启动模式之SingleInstance</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+
+    
+      <div class="comments" id="comments">
+        
+          <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+
+        
+      </div>
+
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            本站概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="https://avatars2.githubusercontent.com/u/1214481?v=3&s=460" alt="Yohan Li" />
+          <p class="site-author-name">Yohan Li</p>
+        </div>
+        <p class="site-description motion-element"></p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">文章</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/demoNo" target="_blank">GitHub</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://weibo.com/jamesay" target="_blank">WeiBo</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://www.v2ex.com/member/jamev5" target="_blank">V2EX</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#affinity："><span class="nav-number">1.</span> <span class="nav-text">affinity：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Intent几种常见的flags："><span class="nav-number">2.</span> <span class="nav-text">Intent几种常见的flags：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-FLAG_ACTIVITY_NEW_TASK："><span class="nav-number">2.1.</span> <span class="nav-text">1.FLAG_ACTIVITY_NEW_TASK：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-FLAG_ACTIVITY_CLEAR_TOP："><span class="nav-number">2.2.</span> <span class="nav-text">2.FLAG_ACTIVITY_CLEAR_TOP：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-FLAG_ACTIVITY_SINGLE_TOP："><span class="nav-number">2.3.</span> <span class="nav-text">3.FLAG_ACTIVITY_SINGLE_TOP：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET："><span class="nav-number">2.4.</span> <span class="nav-text">4.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-FLAG_ACTIVITY_RESET_TASK_IF_NEEDED："><span class="nav-number">2.5.</span> <span class="nav-text">5.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#的task相关属性"><span class="nav-number">3.</span> <span class="nav-text">的task相关属性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-android:allowTaskReparenting"><span class="nav-number">3.1.</span> <span class="nav-text">1.android:allowTaskReparenting</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-android:alwaysRetainTaskState"><span class="nav-number">3.2.</span> <span class="nav-text">2.android:alwaysRetainTaskState</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-android:clearTaskOnLaunch"><span class="nav-number">3.3.</span> <span class="nav-text">3.android:clearTaskOnLaunch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-android:finishOnTaskLaunch"><span class="nav-number">3.4.</span> <span class="nav-text">4.android:finishOnTaskLaunch</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2015
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">Yohan Li</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.3"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.3"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.3" id="motion.global"></script>
+
+
+
+  <script type="text/javascript" src="/js/search-toggle.js"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.3" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if (isDesktop() && CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    });
+  </script>
+
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+  
+
+  
+  
+  
+
+  
+
+    
+      
+    
+
+    <script type="text/javascript">
+      var disqus_shortname = 'yohanli';
+      var disqus_identifier = '2014/03/04/android-activity-task/';
+      var disqus_title = '（转）Android activity task相关';
+      var disqus_url = 'http://yohan.li/2014/03/04/android-activity-task/';
+
+      (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }());
+    </script>
+  
+
+
+
+
+  
+  
+  <script type="text/javascript" src="/js/analytics_google-analytics.js?v=0.4.3"></script>
+
+
+</body>
+</html>
