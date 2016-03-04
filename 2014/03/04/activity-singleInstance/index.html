@@ -20,7 +20,7 @@
 
 
 
-  <meta name="keywords" content="Android,LaunchMode,SingleInstance," />
+  <meta name="keywords" content="Android,SingleInstance,LaunchMode," />
 
 
 
@@ -228,14 +228,15 @@
 </blockquote>
 <p>接上篇文章，这篇主要是了解<code>singleInstance</code>启动模式。由于已经有人整理的非常好，并且讲的很通俗和详细，所以就不再重复造轮子了。这篇文章直接引用csdn的<a href="http://blog.csdn.net/liuhe688/article/details/6754323" target="_blank" rel="external">scottliu</a>的文章。</p>
 <a id="more"></a>
-<h1 id="singleInstance">singleInstance</h1><p>这种启动模式比较特殊，因为它会启用一个新的栈结构，将<code>Acitvity</code>放置于这个新的栈结构中，并保证不再有其他<code>Activity</code>实例进入。<br>我们修改<code>FirstActivity</code>的<code>launchMode=&quot;standard&quot;</code>，<code>SecondActivity</code>的<code>launchMode=&quot;singleInstance&quot;</code>，由于涉及到了多个栈结构，我们需要在每个<code>Activity</code>中显示当前栈结构的<code>id</code>，所以我们为每个<code>Activity</code>添加如下代码：</p>
+<p>#singleInstance</p>
+<p>这种启动模式比较特殊，因为它会启用一个新的栈结构，将<code>Acitvity</code>放置于这个新的栈结构中，并保证不再有其他<code>Activity</code>实例进入。<br>我们修改<code>FirstActivity</code>的<code>launchMode=&quot;standard&quot;</code>，<code>SecondActivity</code>的<code>launchMode=&quot;singleInstance&quot;</code>，由于涉及到了多个栈结构，我们需要在每个<code>Activity</code>中显示当前栈结构的<code>id</code>，所以我们为每个<code>Activity</code>添加如下代码：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">TextView taskIdView = (TextView) findViewById(R.id.taskIdView);</span><br><span class="line">taskIdView.setText(<span class="string">"current task id: "</span> + <span class="keyword">this</span>.getTaskId());</span><br></pre></td></tr></table></figure>
 <p>然后我们再演示一下这个流程发现这两个<code>Activity</code>实例分别被放置在不同的栈结构中，即两个<code>Activity</code>的<code>taskid</code>都不一样。关于<code>singleInstance</code>的原理图如下：</p>
 <p><img src="http://media.tumblr.com/495bccdd22412948e6ff67737548d654/tumblr_inline_mol1hqDPRl1qz4rgp.png" alt=""></p>
 <p>我们看到从<code>FirstActivity</code>跳转到<code>SecondActivity</code>时，重新启用了一个新的栈结构，来放置<code>SecondActivity</code>实例，然后按下后退键，再次回到原始栈结构；图中下半部分显示的在<code>SecondActivity</code>中再次跳转到<code>FirstActivity</code>，这个时候系统会在原始栈结构中生成一个<code>FirstActivity</code>实例，然后回退两次，注意，并没有退出，而是回到了<code>SecondActivity</code>，为什么呢？是因为<code>从SecondActivity</code>跳转到<code>FirstActivity</code>的时候，我们的起点变成了<code>SecondActivity</code>实例所在的栈结构，这样一来，我们需要“回归”到这个栈结构。<br>如果我们修改<code>FirstActivity</code>的<code>LaunchMode</code>值为<code>singleTop</code>、<code>singleTask</code>、<code>singleInstance</code>中的任意一个，流程将会如图所示：</p>
 <p><img src="http://media.tumblr.com/37c0ebf199defc5f2922b0389040402e/tumblr_inline_mol1jd3Hsm1qz4rgp.png" alt=""></p>
 <p><code>singleInstance</code>启动模式可能是最复杂的一种模式，为了帮助大家理解，我举一个例子，假如我们有一个<code>share</code>应用，其中的<code>ShareActivity</code>是入口<code>Activity</code>，也是可供其他应用调用的<code>Activity</code>，我们把这个<code>Activity</code>的启动模式设置为<code>singleInstance</code>，然后在其他应用中调用。我们编辑<code>ShareActivity</code>的配置：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">activity</span> <span class="attribute">android:name</span>=<span class="value">".ShareActivity"</span> <span class="attribute">android:launchMode</span>=<span class="value">"singleInstance"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">intent-filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">action</span> <span class="attribute">android:name</span>=<span class="value">"android.intent.action.MAIN"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">category</span> <span class="attribute">android:name</span>=<span class="value">"android.intent.category.LAUNCHER"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">intent-filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">intent-filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">action</span> <span class="attribute">android:name</span>=<span class="value">"android.intent.action.SINGLE_INSTANCE_SHARE"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">category</span> <span class="attribute">android:name</span>=<span class="value">"android.intent.category.DEFAULT"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">intent-filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">activity</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".ShareActivity"</span> <span class="attr">android:launchMode</span>=<span class="string">"singleInstance"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.MAIN"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.LAUNCHER"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.SINGLE_INSTANCE_SHARE"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.DEFAULT"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>然后我们在其他应用中这样启动该<code>Activity</code>：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="string">"android.intent.action.SINGLE_INSTANCE_SHARE"</span>);</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
 <p>当我们打开<code>ShareActivity</code>后再按后退键回到原来界面时，<code>ShareActivity</code>做为一个独立的个体存在，如果这时我们打开<code>share</code>应用，无需创建新的<code>ShareActivity</code>实例即可看到结果，因为系统会自动查找，存在则直接利用。大家可以在<code>ShareActivity</code>中打印一下<code>taskId</code>，看看效果。关于这个过程，原理图如下：</p>
@@ -250,9 +251,9 @@
           
             <a href="/tags/Android/"> #Android </a>
           
-            <a href="/tags/LaunchMode/"> #LaunchMode </a>
-          
             <a href="/tags/SingleInstance/"> #SingleInstance </a>
+          
+            <a href="/tags/LaunchMode/"> #LaunchMode </a>
           
         </div>
       
@@ -385,7 +386,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#singleInstance"><span class="nav-number">1.</span> <span class="nav-text">singleInstance</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
@@ -402,8 +403,8 @@
       <div class="footer-inner">
         <div class="copyright">
   
-  &copy; &nbsp; 
-  2015
+  &copy; &nbsp;  2015 - 
+  2016
   <span class="with-love">
     <i class="icon-heart"></i>
   </span>

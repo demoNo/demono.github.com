@@ -215,31 +215,35 @@
       
 
       
-        <h1 id="NDK的下载和安装">NDK的下载和安装</h1><blockquote>
+        <p>#NDK的下载和安装</p>
+<blockquote>
 <p>注意：这里只是针对ndk版本为 “Android NDK, Revision 8e”的介绍，操作系统为Windows。<br><a id="more"></a> </p>
 </blockquote>
-<h2 id="下载">下载</h2><p>首先去官网<a href="http://developer.android.com/tools/sdk/ndk/index.html" target="_blank" rel="external">android ndk</a>下载Android ndk。如下图选择合适的包。</p>
+<p>##下载</p>
+<p>首先去官网<a href="http://developer.android.com/tools/sdk/ndk/index.html" target="_blank" rel="external">android ndk</a>下载Android ndk。如下图选择合适的包。</p>
 <p><img src="http://media.tumblr.com/4c3030d014e19e66e59ce0721772b56f/tumblr_inline_mnya77Ypps1qz4rgp.jpg" alt=""></p>
 <p>这里选择Windows版的。下载完之后解压缩到C盘，当然也可以解压到其他目录。<br>接下来需要安装cygwin。下载<a href="http://www.cygwin.com/setup.exe" target="_blank" rel="external">cygwin</a>，版本必须是1.7以上。在cygwin选择所需要安装的包时如下图选择。</p>
 <p><img src="http://media.tumblr.com/1723b7c246c71536251cc20edb595e08/tumblr_inline_mnya8jdgV51qz4rgp.png" alt=""></p>
-<h2 id="安装">安装</h2><p>接下来一直下一步直到完成安装。</p>
+<p>##安装</p>
+<p>接下来一直下一步直到完成安装。</p>
 <blockquote>
 <p>！注意接下来这步不是必须的。</p>
 </blockquote>
 <p>为了使用方便我们需要简单的配置一下cwygin。在cygwin的根目录下找到home文件夹并在里面找到以自己登录名命名的文件夹，进去之后找到<strong>.bash_profile</strong>(如果不存在的话新建一个)文件，用文本编辑器打开然后填入以下内容</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ANDROID_NDK_ROOT=/cygdrive/c/android-ndk-r8e</span><br><span class="line"><span class="built_in">export</span> ANDROID_NDK_ROOT</span><br></pre></td></tr></table></figure>
 <p>这里的<strong><code>c/android-ndk-r8e</code></strong>是指自己的ndk安装路径，我这里是C盘，所以这样写，前面的<strong><code>/cygdrive/</code></strong>是cygwin访问本地磁盘目录必带前缀，我们可以把它看成是Windows的根目录。</p>
-<h2 id="构建">构建</h2><p>这样每次使用cygwin进行build的时候就方便一点了。如下在cygwin中输入</p>
+<p>##构建</p>
+<p>这样每次使用cygwin进行build的时候就方便一点了。如下在cygwin中输入</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> [你的工程所在路径] 例如 <span class="built_in">cd</span> /cygdrive/d/workspace/Ndk_example</span><br><span class="line"><span class="variable">$ANDROID_NDK_ROOT</span>/ndk-build</span><br></pre></td></tr></table></figure>
 <p>执行完上面的命令之后刷新工程就能看见新生成的<code>.so</code>文件，就是编译好的库文件。<br>接下来需要返回来编写Android工程。在eclipse中新建Android工程，和普通Android工程不同的是需要在根目录中添加jni目录。整个目录结构如下：</p>
 <p><img src="http://media.tumblr.com/bf23fe1912893bd813702a29d0978ad0/tumblr_inline_mnytj05S3n1qz4rgp.png" alt=""></p>
 <p>MainActivity.java内容如下</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</span><br><span class="line"><span class="keyword">private</span> TextView tv;</span><br><span class="line"><span class="annotation">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">	setContentView(R.layout.activity_main);</span><br><span class="line">	tv = (TextView) findViewById(R.id.test);</span><br><span class="line">	tv.setText(say());<span class="comment">//调用本地方法</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">static</span> &#123;</span><br><span class="line">	System.loadLibrary(<span class="string">"hello"</span>);<span class="comment">//加载本地库</span></span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">native</span> String <span class="title">say</span><span class="params">()</span></span>;<span class="comment">//待实现的本地方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</span><br><span class="line"><span class="keyword">private</span> TextView tv;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">	setContentView(R.layout.activity_main);</span><br><span class="line">	tv = (TextView) findViewById(R.id.test);</span><br><span class="line">	tv.setText(say());<span class="comment">//调用本地方法</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">static</span> &#123;</span><br><span class="line">	System.loadLibrary(<span class="string">"hello"</span>);<span class="comment">//加载本地库</span></span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">native</span> String <span class="title">say</span><span class="params">()</span></span>;<span class="comment">//待实现的本地方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>hello.c内容如下</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;string.h&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;jni.h&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="function">jstring <span class="title">Java_com_example_ndkexample_MainActivity_say</span><span class="params">(JNIEnv* env, jobject javaThis)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (*env)-&gt;NewStringUTF(env, <span class="string">"Hello from native code!"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;jni.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function">jstring <span class="title">Java_com_example_ndkexample_MainActivity_say</span><span class="params">(JNIEnv* env, jobject javaThis)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (*env)-&gt;NewStringUTF(env, <span class="string">"Hello from native code!"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>c文件中对Java定义的本地方法的实现中，函数名必须对应起来，比如现在我的包名为<br><code>com.example.ndkexample</code> 方法名为<code>say</code>，返回值为<code>String</code>，则对应的c中函数定义则为<code>jstring Java_com_example_ndkexample_MainActivity_say</code>函数中的两个参数是固定的，如果Java中的方法有参数，则对应的c函数中也会添加。一般Java中的基本类型在c中对应的类型为前面加<code>j</code>，比如<code>String -&gt; jstring</code>。</p>
 <p>Android.mk内容如下</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="constant">LOCAL_PATH </span><span class="symbol">:</span>= <span class="variable">$(</span>call my-dir)</span><br><span class="line"><span class="keyword">include</span> <span class="variable">$(</span><span class="constant">CLEAR_VARS)</span></span><br><span class="line"><span class="comment"># Here we give our module name and source file(s)</span></span><br><span class="line"><span class="constant">LOCAL_MODULE </span>   <span class="symbol">:</span>= hello</span><br><span class="line"><span class="constant">LOCAL_SRC_FILES </span><span class="symbol">:</span>= hello.c</span><br><span class="line"><span class="keyword">include</span> <span class="variable">$(</span><span class="constant">BUILD_SHARED_LIBRARY)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_PATH := $(<span class="keyword">call</span> my-dir)</span><br><span class="line"><span class="keyword">include</span> $(CLEAR_VARS)</span><br><span class="line"># Here we give our <span class="keyword">module</span> <span class="keyword">name</span> <span class="keyword">and</span> <span class="keyword">source</span> <span class="keyword">file</span>(s)</span><br><span class="line">LOCAL_MODULE    := hello</span><br><span class="line">LOCAL_SRC_FILES := hello.c</span><br><span class="line"><span class="keyword">include</span> $(BUILD_SHARED_LIBRARY)</span><br></pre></td></tr></table></figure>
 <p>接下来我们执行上面的提到的<code>build</code>命令就能生成对应的库文件了。</p>
 <blockquote>
 <p>记得生成后刷新工程。</p>
@@ -387,7 +391,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#NDK的下载和安装"><span class="nav-number">1.</span> <span class="nav-text">NDK的下载和安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载"><span class="nav-number">1.1.</span> <span class="nav-text">下载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构建"><span class="nav-number">1.3.</span> <span class="nav-text">构建</span></a></li></ol></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
@@ -404,8 +408,8 @@
       <div class="footer-inner">
         <div class="copyright">
   
-  &copy; &nbsp; 
-  2015
+  &copy; &nbsp;  2015 - 
+  2016
   <span class="with-love">
     <i class="icon-heart"></i>
   </span>

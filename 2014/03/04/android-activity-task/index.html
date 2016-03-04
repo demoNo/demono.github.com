@@ -240,13 +240,16 @@
 <li><p><activity>与task相关属性</activity></p>
 </li>
 </ol>
-<h1 id="affinity：">affinity：</h1><p>task对于Activity来说就好像它的身份证一样，可以告诉所在的task，自己属于这个task中的一员；拥有相同affinity的多个Activity理论同属于一个task，task自身的affinity决定于根Activity的affinity值。affinity在什么场合应用呢？1.根据affinity重新为Activity选择宿主task（与allowTaskReparenting属性配合工作）；2.启动一个Activity过程中Intent使用了<code>FLAG_ACTIVITY_NEW_TASK</code>标记，根据affinity查找或创建一个新的具有对应affinity的task。我们会在后面进行详细讲解。</p>
+<p>#affinity：</p>
+<p>task对于Activity来说就好像它的身份证一样，可以告诉所在的task，自己属于这个task中的一员；拥有相同affinity的多个Activity理论同属于一个task，task自身的affinity决定于根Activity的affinity值。affinity在什么场合应用呢？1.根据affinity重新为Activity选择宿主task（与allowTaskReparenting属性配合工作）；2.启动一个Activity过程中Intent使用了<code>FLAG_ACTIVITY_NEW_TASK</code>标记，根据affinity查找或创建一个新的具有对应affinity的task。我们会在后面进行详细讲解。</p>
 <p>默认情况下，一个应用内的所有Activity都具有相同的affinity，都是从Application（参考<application>的taskAffinity属性）继承而来，而Application默认的affinity是<manifest>中的包名，我们可以为<application>设置taskAffinity属性值，这样可以应用到<application>下的所有<activity>，也可以单独为某个Activity设置taskAffinity。例如：在系统自带的Browser中，package为com.android.browser，但是<application>却自定义一个taskAffinity属性值：</application></activity></application></application></manifest></application></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">application</span> <span class="attribute">android:name</span>=<span class="value">"Browser"</span></span><br><span class="line">	<span class="attribute">android:label</span>=<span class="value">"@string/application_name"</span></span><br><span class="line">	<span class="attribute">android:icon</span>=<span class="value">"@drawable/ic_launcher_browser"</span></span><br><span class="line">	<span class="attribute">android:backupAgent</span>=<span class="value">".BrowserBackupAgent"</span></span><br><span class="line">	<span class="attribute">android:taskAffinity</span>=<span class="value">"android.task.browser"</span> &gt;</span></span><br></pre></td></tr></table></figure>
-<h1 id="Intent几种常见的flags：">Intent几种常见的flags：</h1><p>在android.content.Intent中定义了若干个flags，其中最重要的有以下几个：</p>
-<h2 id="1-FLAG_ACTIVITY_NEW_TASK：">1.<code>FLAG_ACTIVITY_NEW_TASK</code>：</h2><p>当Intent对象包含这个标记时，系统会寻找或创建一个新的task来放置目标Activity，寻找时依据目标Activity的taskAffinity属性进行匹配，如果找到一个task的taskAffinity与之相同，就将目标Activity压入此task中，如果查找无果，则创建一个新的task，并将该task的taskAffinity设置为目标Activity的taskActivity，将目标Activity放置于此task。注意，如果同一个应用中Activity的taskAffinity都使用默认值或都设置相同值时，应用内的Activity之间的跳转使用这个标记是没有意义的，因为当前应用task就是目标Activity最好的宿主。下面我们会通过实例进行演示这个特性：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">application</span> <span class="attr">android:name</span>=<span class="string">"Browser"</span></span><br><span class="line">	<span class="attr">android:label</span>=<span class="string">"@string/application_name"</span></span><br><span class="line">	<span class="attr">android:icon</span>=<span class="string">"@drawable/ic_launcher_browser"</span></span><br><span class="line">	<span class="attr">android:backupAgent</span>=<span class="string">".BrowserBackupAgent"</span></span><br><span class="line">	<span class="attr">android:taskAffinity</span>=<span class="string">"android.task.browser"</span> &gt;</span></span><br></pre></td></tr></table></figure>
+<p>#Intent几种常见的flags：</p>
+<p>在android.content.Intent中定义了若干个flags，其中最重要的有以下几个：</p>
+<p>##1.<code>FLAG_ACTIVITY_NEW_TASK</code>：</p>
+<p>当Intent对象包含这个标记时，系统会寻找或创建一个新的task来放置目标Activity，寻找时依据目标Activity的taskAffinity属性进行匹配，如果找到一个task的taskAffinity与之相同，就将目标Activity压入此task中，如果查找无果，则创建一个新的task，并将该task的taskAffinity设置为目标Activity的taskActivity，将目标Activity放置于此task。注意，如果同一个应用中Activity的taskAffinity都使用默认值或都设置相同值时，应用内的Activity之间的跳转使用这个标记是没有意义的，因为当前应用task就是目标Activity最好的宿主。下面我们会通过实例进行演示这个特性：</p>
 <p>我们新建两个项目，分别命名为appA和appB，并且分别创建FirstActivity和SecondActivity，我们准备让appB中的FirstActivity跳转到appA的SecondActivity。appA中的SecondActivity配置如下：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">activity</span> <span class="attribute">android:name</span>=<span class="value">".SecondActivity"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">intent-filter</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">action</span> <span class="attribute">android:name</span>=<span class="value">"android.intent.action.APP_A_SECOND_ACTIVITY"</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">category</span> <span class="attribute">android:name</span>=<span class="value">"android.intent.category.DEFAULT"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="title">intent-filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">activity</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".SecondActivity"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.APP_A_SECOND_ACTIVITY"</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.DEFAULT"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>然后，在appB中的FirstActivity跳转代码如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="string">"android.intent.action.APP_A_SECOND_ACTIVITY"</span>);</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
 <p>我们要演示几个步骤：</p>
@@ -277,7 +280,8 @@
 <p><img src="http://media.tumblr.com/9bb24b3510f03077c9ef4aab4e26e945/tumblr_inline_momhog4VLc1qz4rgp.png" alt=""></p>
 <p>我们看到差别了吧，当我们再次启动appB时已经看不到刚才启动的appA中的SecondActivity，而启动appA时却直接看到了，说明这个SecondActivity实例并不在appB的task内，而是创建了一个task，这个task的affinity就是SecondActivity默认的affinity，由于appA的SecondActivity的affinity是从Application继承而来，所以当appA启动时会直接找到这个task，而不是创建新的task。我们看一下解析图：</p>
 <p><img src="http://media.tumblr.com/a33375ae6260ca23fd518553af5faa87/tumblr_inline_momhpap11L1qz4rgp.png" alt=""></p>
-<h2 id="2-FLAG_ACTIVITY_CLEAR_TOP：">2.<code>FLAG_ACTIVITY_CLEAR_TOP</code>：</h2><p>当Intent对象包含这个标记时，如果在栈中发现存在Activity实例，则清空这个实例之上的Activity，使其处于栈顶。例如：我们的FirstActivity跳转到SecondActivity，SecondActivity跳转到ThirdActivity，而ThirdActivity又跳到SecondActivity，那么ThirdActivity实例将被弹出栈，使SecondActivity处于栈顶，显示到幕前，栈内只剩下FirstActivity和SecondActivity。这个SecondActivity既可以在onNewIntent()中接收到传来的Intent，也可以把自己销毁之后重新启动来接受这个Intent。在使用默认的“standard”启动模式下，如果没有在Intent使用到<code>FLAG_ACTIVITY_SINGLE_TOP</code>标记，那么它将关闭后重建，如果使用了这个<code>FLAG_ACTIVITY_SINGLE_TOP</code>标记，则会使用已存在的实例；对于其他启动模式，无需再使用<code>FLAG_ACTIVITY_SINGLE_TOP</code>，它都将使用已存在的实例，Intent会被传递到这个实例的onNewIntent()中。</p>
+<p>##2.<code>FLAG_ACTIVITY_CLEAR_TOP</code>：</p>
+<p>当Intent对象包含这个标记时，如果在栈中发现存在Activity实例，则清空这个实例之上的Activity，使其处于栈顶。例如：我们的FirstActivity跳转到SecondActivity，SecondActivity跳转到ThirdActivity，而ThirdActivity又跳到SecondActivity，那么ThirdActivity实例将被弹出栈，使SecondActivity处于栈顶，显示到幕前，栈内只剩下FirstActivity和SecondActivity。这个SecondActivity既可以在onNewIntent()中接收到传来的Intent，也可以把自己销毁之后重新启动来接受这个Intent。在使用默认的“standard”启动模式下，如果没有在Intent使用到<code>FLAG_ACTIVITY_SINGLE_TOP</code>标记，那么它将关闭后重建，如果使用了这个<code>FLAG_ACTIVITY_SINGLE_TOP</code>标记，则会使用已存在的实例；对于其他启动模式，无需再使用<code>FLAG_ACTIVITY_SINGLE_TOP</code>，它都将使用已存在的实例，Intent会被传递到这个实例的onNewIntent()中。</p>
 <p>下面我们来验证一下这个过程：</p>
 <p>首先，Activity启动模式都按照默认值“standard”。从FirstActivity跳转到SecondActivity，SecondActivity实例如下：</p>
 <p><img src="http://media.tumblr.com/d3647f54ffffcd7290c5bd476ef01b64/tumblr_inline_momhr6IKO31qz4rgp.png" alt=""></p>
@@ -291,11 +295,14 @@
 <p>两次实例均如下图所示：</p>
 <p><img src="http://media.tumblr.com/347c05ab4577c7a55031af1cf2e22ddc/tumblr_inline_momhtdVp4p1qz4rgp.png" alt=""></p>
 <p>如果我们不想添加<code>FLAG_ACTIVITY_SINGLE_TOP</code>，那么把SecondActivity的启动模式改为“standard”之外的三种即可，效果和上面一样，都不会创建新的实例。</p>
-<h2 id="3-FLAG_ACTIVITY_SINGLE_TOP：">3.<code>FLAG_ACTIVITY_SINGLE_TOP</code>：</h2><p>当task中存在目标Activity实例并且位于栈的顶端时，不再创建一个新的，直接利用这个实例。我们在上边的例子中也有讲到。</p>
-<h2 id="4-FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET：">4.<code>FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET</code>：</h2><p>如果一个Intent中包含此属性，则它转向的那个Activity以及在那个Activity其上的所有Activity都会在task重置时被清除出task。当我们将一个后台的task重新回到前台时，系统会在特定情况下为这个动作附带一个<code>FLAG_ACTIVITY_RESET_TASK_IF_NEEDED</code>标记，意味着必要时重置task，这时<code>FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET</code>就会生效。经过测试发现，对于一个处于后台的应用，如果在主选单点击应用，这个动作中含有<code>FLAG_ACTIVITY_RESET_TASK_IF_NEEDED</code>标记，长按Home键，然后点击最近记录，这个动作不含<code>FLAG_ACTIVITY_RESET_TASK_IF_NEEDED</code>标记,所以前者会清除，后者不会。关于这个标记，可以下图示之：</p>
+<p>##3.<code>FLAG_ACTIVITY_SINGLE_TOP</code>：</p>
+<p>当task中存在目标Activity实例并且位于栈的顶端时，不再创建一个新的，直接利用这个实例。我们在上边的例子中也有讲到。</p>
+<p>##4.<code>FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET</code>：</p>
+<p>如果一个Intent中包含此属性，则它转向的那个Activity以及在那个Activity其上的所有Activity都会在task重置时被清除出task。当我们将一个后台的task重新回到前台时，系统会在特定情况下为这个动作附带一个<code>FLAG_ACTIVITY_RESET_TASK_IF_NEEDED</code>标记，意味着必要时重置task，这时<code>FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET</code>就会生效。经过测试发现，对于一个处于后台的应用，如果在主选单点击应用，这个动作中含有<code>FLAG_ACTIVITY_RESET_TASK_IF_NEEDED</code>标记，长按Home键，然后点击最近记录，这个动作不含<code>FLAG_ACTIVITY_RESET_TASK_IF_NEEDED</code>标记,所以前者会清除，后者不会。关于这个标记，可以下图示之：</p>
 <p><img src="http://media.tumblr.com/273b4b0304a69dcaf1d526ad03dd9850/tumblr_inline_momhudGCqS1qz4rgp.png" alt=""></p>
 <p>这个标记对于应用存在分割点的情况会非常有用。比如我们在应用主界面要选择一个图片，然后我们启动了图片浏览界面，但是把这个应用从后台恢复到前台时，为了避免让用户感到困惑，我们希望用户仍然看到主界面，而不是图片浏览界面，这个时候我们就要在转到图片浏览界面时的Intent中加入此标记。</p>
-<h2 id="5-FLAG_ACTIVITY_RESET_TASK_IF_NEEDED：">5.<code>FLAG_ACTIVITY_RESET_TASK_IF_NEEDED</code>：</h2><p>这个标记在以下情况下会生效：</p>
+<p>##5.<code>FLAG_ACTIVITY_RESET_TASK_IF_NEEDED</code>：</p>
+<p>这个标记在以下情况下会生效：</p>
 <ol>
 <li><p>启动Activity时创建新的task来放置Activity实例；</p>
 </li>
@@ -303,8 +310,10 @@
 </li>
 </ol>
 <p>我们结合上面的<code>CLEAR_WHEN_TASK_RESET</code>可以加深理解。</p>
-<h1 id="的task相关属性"><activity>的task相关属性</activity></h1><p>在<activity>中定义了几个常见的task相关属性，它们分别代表了task内部不同的行为特征，我们就来逐个介绍一下：</activity></p>
-<h2 id="1-android:allowTaskReparenting">1.android:allowTaskReparenting</h2><p>这个属性用来标记一个Activity实例在当前应用退居后台后，是否能从启动它的那个task移动到有共同affinity的task，“true”表示可以移动，“false”表示它必须呆在当前应用的task中，默认值为false。如果一个这个Activity的<activity>元素没有设定此属性，设定在<application>上的此属性会对此Activity起作用。例如在一个应用中要查看一个web页面，在启动系统浏览器Activity后，这个Activity实例和当前应用处于同一个task，当我们的应用退居后台之后用户再次从主选单中启动应用，此时这个Activity实例将会重新宿主到Browser应用的task内，在我们的应用中将不会再看到这个Activity实例，而如果此时启动Browser应用，就会发现，第一个界面就是我们刚才打开的web页面，证明了这个Activity实例确实是宿主到了Browser应用的task内。我们就来结合实例演示一下这个过程：</application></activity></p>
+<p>#<activity>的task相关属性</activity></p>
+<p>在<activity>中定义了几个常见的task相关属性，它们分别代表了task内部不同的行为特征，我们就来逐个介绍一下：</activity></p>
+<p>##1.android:allowTaskReparenting</p>
+<p>这个属性用来标记一个Activity实例在当前应用退居后台后，是否能从启动它的那个task移动到有共同affinity的task，“true”表示可以移动，“false”表示它必须呆在当前应用的task中，默认值为false。如果一个这个Activity的<activity>元素没有设定此属性，设定在<application>上的此属性会对此Activity起作用。例如在一个应用中要查看一个web页面，在启动系统浏览器Activity后，这个Activity实例和当前应用处于同一个task，当我们的应用退居后台之后用户再次从主选单中启动应用，此时这个Activity实例将会重新宿主到Browser应用的task内，在我们的应用中将不会再看到这个Activity实例，而如果此时启动Browser应用，就会发现，第一个界面就是我们刚才打开的web页面，证明了这个Activity实例确实是宿主到了Browser应用的task内。我们就来结合实例演示一下这个过程：</application></activity></p>
 <p>首先，在appB的FirstActivity中，我们将跳转动作做以下改动：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Intent viewIntent = <span class="keyword">new</span> Intent(Intent.ACTION_VIEW, Uri.parse(<span class="string">"http://www.google.com.hk"</span>));</span><br><span class="line">startActivity(viewIntent);</span><br></pre></td></tr></table></figure>
 <p>进入appB时的界面：</p>
@@ -317,7 +326,7 @@
 <p><img src="http://media.tumblr.com/a200644ebd6b0d737dfd538355c1ab02/tumblr_inline_momhw6gdtf1qz4rgp.png" alt=""></p>
 <p>以上这种行为也证明了我们前面的论断，为了更清楚的说明问题，也为了让大家自己可以验证，下面我们要再次演示一下appB和appA的启动过程：</p>
 <p>对于appA，在上面的基础上，不用修改其他地方，只需为SecondActivity的<activity>元素添加一个属性，如下：</activity></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">activity</span> <span class="attribute">android:name</span>=<span class="value">".SecondActivity"</span> <span class="attribute">android:allowTaskReparenting</span>=<span class="value">"true"</span>&gt;</span></span><br><span class="line">...</span><br><span class="line"><span class="tag">&lt;/<span class="title">activity</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".SecondActivity"</span> <span class="attr">android:allowTaskReparenting</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">...</span><br><span class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>然后，在appB中的FirstActivity跳转代码改为：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="string">"android.intent.action.APP_A_SECOND_ACTIVITY"</span>);</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
 <p>我们启动appB，看到一下界面：</p>
@@ -332,15 +341,17 @@
 <p>需要注意的是，如果appB退居后台之后，没有再次启动appB，而是直接启动appA，将不会出现以上现象。重新宿主的动作发生在appB再次启动的过程中。</p>
 <p>android:allowReparenting的效果图如下：</p>
 <p><img src="http://media.tumblr.com/2e3ef7383975ce7c80d94d71ad54e3b3/tumblr_inline_momi2nwMuC1qz4rgp.png" alt=""></p>
-<h2 id="2-android:alwaysRetainTaskState">2.android:alwaysRetainTaskState</h2><p>这个属性用来标记应用的task是否保持原来的状态，“true”表示总是保持，“false”表示不能够保证，默认为“false”。此属性只对task的根Activity起作用，其他的Activity都会被忽略。</p>
+<p>##2.android:alwaysRetainTaskState</p>
+<p>这个属性用来标记应用的task是否保持原来的状态，“true”表示总是保持，“false”表示不能够保证，默认为“false”。此属性只对task的根Activity起作用，其他的Activity都会被忽略。</p>
 <p>默认情况下，如果一个应用在后台呆的太久例如30分钟，用户从主选单再次选择该应用时，系统就会对该应用的task进行清理，除了根Activity，其他Activity都会被清除出栈，但是如果在根Activity中设置了此属性之后，用户再次启动应用时，仍然可以看到上一次操作的界面。</p>
 <p>这个属性对于一些应用非常有用，例如Browser应用程序，有很多状态，比如打开很多的tab，用户不想丢失这些状态，使用这个属性就极为恰当。</p>
-<h2 id="3-android:clearTaskOnLaunch">3.android:clearTaskOnLaunch</h2><p>这个属性用来标记是否从task清除除根Activity之外的所有的Activity，“true”表示清除，“false”表示不清除，默认为“false”。同样，这个属性也只对根Activity起作用，其他的Activity都会被忽略。</p>
+<p>##3.android:clearTaskOnLaunch</p>
+<p>这个属性用来标记是否从task清除除根Activity之外的所有的Activity，“true”表示清除，“false”表示不清除，默认为“false”。同样，这个属性也只对根Activity起作用，其他的Activity都会被忽略。</p>
 <p>如果设置了这个属性为“true”，每次用户重新启动这个应用时，都只会看到根Activity，task中的其他Activity都会被清除出栈。如果我们的应用中引用到了其他应用的Activity，这些Activity设置了allowTaskReparenting属性为“true”，则它们会被重新宿主到有共同affinity的task中。</p>
 <p>无图无真相，我们就来以实例演示一下这个过程，我们首先修改appB的根Activity的<activity>元素，如下：</activity></p>
-<pre><code class="xml"><span class="tag">&lt;<span class="title">activity</span> <span class="attribute">android:name</span>=<span class="value">".FirstActivity"</span> <span class="attribute">android:clearTaskOnLaunch</span>=<span class="value">"true"</span>&gt;</span>
+<pre><code class="xml"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".FirstActivity"</span> <span class="attr">android:clearTaskOnLaunch</span>=<span class="string">"true"</span>&gt;</span>
 ...
-<span class="tag">&lt;/<span class="title">activity</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">activity</span>&gt;</span>
 </code></pre>
 <p>FristActivity界面如下：</p>
 <p><img src="http://media.tumblr.com/58562165dcbbd4dc07f188ce0bc9f8c9/tumblr_inline_momi3zvU1H1qz4rgp.png" alt=""></p>
@@ -350,7 +361,8 @@
 <p><img src="http://media.tumblr.com/25c3e2328f6f101ee448df318b30afc1/tumblr_inline_momi6uUMSC1qz4rgp.png" alt=""></p>
 <p>我们看到，再次启动appB时，我们只能看到FirstActivity界面，此时在FirstActivity之上的所有Activity都已经被清除出栈。示意图如下：</p>
 <p><img src="http://media.tumblr.com/e6493e65912fafc577a42c2442658274/tumblr_inline_momi7kX6Ev1qz4rgp.png" alt=""></p>
-<h2 id="4-android:finishOnTaskLaunch">4.android:finishOnTaskLaunch</h2><p>这个属性和android:allowReparenting属性相似，不同之处在于allowReparenting属性是重新宿主到有共同affinity的task中，而finishOnTaskLaunch属性是销毁实例。如果这个属性和android:allowReparenting都设定为“true”，则这个属性胜出。</p>
+<p>##4.android:finishOnTaskLaunch</p>
+<p>这个属性和android:allowReparenting属性相似，不同之处在于allowReparenting属性是重新宿主到有共同affinity的task中，而finishOnTaskLaunch属性是销毁实例。如果这个属性和android:allowReparenting都设定为“true”，则这个属性胜出。</p>
 <p>以上就是今天总结的内容，这些都是常用的知识，除此之外还有很多等着我们去探索，继续努力。</p>
 
       
@@ -495,7 +507,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#affinity："><span class="nav-number">1.</span> <span class="nav-text">affinity：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Intent几种常见的flags："><span class="nav-number">2.</span> <span class="nav-text">Intent几种常见的flags：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-FLAG_ACTIVITY_NEW_TASK："><span class="nav-number">2.1.</span> <span class="nav-text">1.FLAG_ACTIVITY_NEW_TASK：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-FLAG_ACTIVITY_CLEAR_TOP："><span class="nav-number">2.2.</span> <span class="nav-text">2.FLAG_ACTIVITY_CLEAR_TOP：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-FLAG_ACTIVITY_SINGLE_TOP："><span class="nav-number">2.3.</span> <span class="nav-text">3.FLAG_ACTIVITY_SINGLE_TOP：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET："><span class="nav-number">2.4.</span> <span class="nav-text">4.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-FLAG_ACTIVITY_RESET_TASK_IF_NEEDED："><span class="nav-number">2.5.</span> <span class="nav-text">5.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#的task相关属性"><span class="nav-number">3.</span> <span class="nav-text">的task相关属性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-android:allowTaskReparenting"><span class="nav-number">3.1.</span> <span class="nav-text">1.android:allowTaskReparenting</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-android:alwaysRetainTaskState"><span class="nav-number">3.2.</span> <span class="nav-text">2.android:alwaysRetainTaskState</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-android:clearTaskOnLaunch"><span class="nav-number">3.3.</span> <span class="nav-text">3.android:clearTaskOnLaunch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-android:finishOnTaskLaunch"><span class="nav-number">3.4.</span> <span class="nav-text">4.android:finishOnTaskLaunch</span></a></li></ol></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
@@ -512,8 +524,8 @@
       <div class="footer-inner">
         <div class="copyright">
   
-  &copy; &nbsp; 
-  2015
+  &copy; &nbsp;  2015 - 
+  2016
   <span class="with-love">
     <i class="icon-heart"></i>
   </span>
