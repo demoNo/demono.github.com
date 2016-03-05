@@ -3,7 +3,7 @@ MAP -->
 =============================================== */
 
 var locations = [
-	['<div class="infobox"><h3 class="title"><a href="about.html">MY USA OFFICE</a></h3><span>NEW YORK CITY 4102 / 52</span><br><span>+71 325 988 32 81</span></div>', -37.812154, 144.954619, 2]
+	['<div class="infobox"><h3 class="title"><a href="about.html">My BeiJing Location</a></h3><span>HuiLongGuan</span><br><span>+86 185 006 12334</span></div>', 40.083966, 116.349804, 2]
 	];     
 	var map = new google.maps.Map(document.getElementById('map'), {
 		zoom: 16,
@@ -14,7 +14,7 @@ var locations = [
 		draggable: true,
 		styles: [ { "stylers": [ { "hue": "#ffffff" },  {saturation: -100},
 		{gamma: 2} ] } ],
-		center: new google.maps.LatLng(-37.812154, 144.954619),
+		center: new google.maps.LatLng(40.083966, 116.349804),
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 		});
 		var infowindow = new google.maps.InfoWindow();
