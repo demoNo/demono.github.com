@@ -97,7 +97,7 @@
 <meta property="og:image" content="http://media.tumblr.com/495bccdd22412948e6ff67737548d654/tumblr_inline_mol1hqDPRl1qz4rgp.png">
 <meta property="og:image" content="http://media.tumblr.com/37c0ebf199defc5f2922b0389040402e/tumblr_inline_mol1jd3Hsm1qz4rgp.png">
 <meta property="og:image" content="http://media.tumblr.com/a28489e78bde9edcc47bd0bd45124955/tumblr_inline_mol1m35Zag1qz4rgp.png">
-<meta property="og:updated_time" content="2017-01-22T10:11:15.000Z">
+<meta property="og:updated_time" content="2017-01-24T03:05:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Activity启动模式之SingleInstance">
 <meta name="twitter:description" content="Activity启动模式之 singleInstance
@@ -423,8 +423,7 @@
 </blockquote>
 <p>接上篇文章，这篇主要是了解<code>singleInstance</code>启动模式。由于已经有人整理的非常好，并且讲的很通俗和详细，所以就不再重复造轮子了。这篇文章直接引用csdn的<a href="http://blog.csdn.net/liuhe688/article/details/6754323" target="_blank" rel="external">scottliu</a>的文章。</p>
 <a id="more"></a>
-<p>#singleInstance</p>
-<p>这种启动模式比较特殊，因为它会启用一个新的栈结构，将<code>Acitvity</code>放置于这个新的栈结构中，并保证不再有其他<code>Activity</code>实例进入。<br>我们修改<code>FirstActivity</code>的<code>launchMode=&quot;standard&quot;</code>，<code>SecondActivity</code>的<code>launchMode=&quot;singleInstance&quot;</code>，由于涉及到了多个栈结构，我们需要在每个<code>Activity</code>中显示当前栈结构的<code>id</code>，所以我们为每个<code>Activity</code>添加如下代码：</p>
+<h1 id="singleInstance"><a href="#singleInstance" class="headerlink" title="singleInstance"></a>singleInstance</h1><p>这种启动模式比较特殊，因为它会启用一个新的栈结构，将<code>Acitvity</code>放置于这个新的栈结构中，并保证不再有其他<code>Activity</code>实例进入。<br>我们修改<code>FirstActivity</code>的<code>launchMode=&quot;standard&quot;</code>，<code>SecondActivity</code>的<code>launchMode=&quot;singleInstance&quot;</code>，由于涉及到了多个栈结构，我们需要在每个<code>Activity</code>中显示当前栈结构的<code>id</code>，所以我们为每个<code>Activity</code>添加如下代码：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">TextView taskIdView = (TextView) findViewById(R.id.taskIdView);</div><div class="line">taskIdView.setText(<span class="string">"current task id: "</span> + <span class="keyword">this</span>.getTaskId());</div></pre></td></tr></table></figure>
 <p>然后我们再演示一下这个流程发现这两个<code>Activity</code>实例分别被放置在不同的栈结构中，即两个<code>Activity</code>的<code>taskid</code>都不一样。关于<code>singleInstance</code>的原理图如下：</p>
 <p><img src="http://media.tumblr.com/495bccdd22412948e6ff67737548d654/tumblr_inline_mol1hqDPRl1qz4rgp.png" alt=""></p>
@@ -538,8 +537,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://avatars2.githubusercontent.com/u/1214481?v=3&s=460"
@@ -624,6 +632,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#singleInstance"><span class="nav-number">1.</span> <span class="nav-text">singleInstance</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
