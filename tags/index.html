@@ -27,6 +27,9 @@
 
 
 
+
+
+
   
   
   <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
@@ -45,6 +48,12 @@
   
 
   
+    
+      
+    
+
+    
+  
 
   
 
@@ -55,7 +64,7 @@
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Monda:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -99,7 +108,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Mist',
-    sidebar: {"position":"left","display":"hide"},
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -138,14 +147,18 @@
   
 
 
+
+
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
           m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
   ga('create', 'UA-28040601-2', 'auto');
   ga('send', 'pageview');
 </script>
+
+
 
 
 
@@ -164,27 +177,29 @@
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
 
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Yohan's chat</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yohan's chat</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
   </div>
-    
-      <p class="site-subtitle"></p>
-    
-</div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
 <nav class="site-nav">
@@ -275,7 +290,7 @@
   <div id="posts" class="posts-expand">
   <header class="post-header">
 
-	<h2 class="post-title" itemprop="name headline">标签</h2>
+	<h1 class="post-title" itemprop="name headline">标签</h1>
 
 
 
@@ -285,10 +300,10 @@
     
       <div class="tag-cloud">
         <div class="tag-cloud-title">
-            目前共计 15 个标签
+            目前共计 22 个标签
         </div>
         <div class="tag-cloud-tags">
-          <a href="/tags/Activity/" style="font-size: 24px; color: #4f4f4f">Activity</a> <a href="/tags/Android/" style="font-size: 30px; color: #111">Android</a> <a href="/tags/Android-6-0/" style="font-size: 12px; color: #ccc">Android 6.0</a> <a href="/tags/BubbleSort/" style="font-size: 12px; color: #ccc">BubbleSort</a> <a href="/tags/Fragment/" style="font-size: 18px; color: #8e8e8e">Fragment</a> <a href="/tags/LanchMode/" style="font-size: 12px; color: #ccc">LanchMode</a> <a href="/tags/LanunchMode/" style="font-size: 12px; color: #ccc">LanunchMode</a> <a href="/tags/LaunchMode/" style="font-size: 12px; color: #ccc">LaunchMode</a> <a href="/tags/NDK/" style="font-size: 12px; color: #ccc">NDK</a> <a href="/tags/SingleInstance/" style="font-size: 12px; color: #ccc">SingleInstance</a> <a href="/tags/SingleTask/" style="font-size: 12px; color: #ccc">SingleTask</a> <a href="/tags/animation/" style="font-size: 12px; color: #ccc">animation</a> <a href="/tags/density/" style="font-size: 12px; color: #ccc">density</a> <a href="/tags/git/" style="font-size: 12px; color: #ccc">git</a> <a href="/tags/runtime-permissions/" style="font-size: 12px; color: #ccc">runtime permissions</a>
+          <a href="/tags/Activity/" style="font-size: 24px; color: #4f4f4f">Activity</a> <a href="/tags/Android/" style="font-size: 30px; color: #111">Android</a> <a href="/tags/Android-6-0/" style="font-size: 12px; color: #ccc">Android 6.0</a> <a href="/tags/BubbleSort/" style="font-size: 12px; color: #ccc">BubbleSort</a> <a href="/tags/Fragment/" style="font-size: 18px; color: #8e8e8e">Fragment</a> <a href="/tags/LanchMode/" style="font-size: 12px; color: #ccc">LanchMode</a> <a href="/tags/LanunchMode/" style="font-size: 12px; color: #ccc">LanunchMode</a> <a href="/tags/LaunchMode/" style="font-size: 12px; color: #ccc">LaunchMode</a> <a href="/tags/NDK/" style="font-size: 12px; color: #ccc">NDK</a> <a href="/tags/SingleInstance/" style="font-size: 12px; color: #ccc">SingleInstance</a> <a href="/tags/SingleTask/" style="font-size: 12px; color: #ccc">SingleTask</a> <a href="/tags/animation/" style="font-size: 12px; color: #ccc">animation</a> <a href="/tags/bash/" style="font-size: 12px; color: #ccc">bash</a> <a href="/tags/density/" style="font-size: 12px; color: #ccc">density</a> <a href="/tags/git/" style="font-size: 12px; color: #ccc">git</a> <a href="/tags/iTerm2/" style="font-size: 12px; color: #ccc">iTerm2</a> <a href="/tags/oh-my-zsh/" style="font-size: 12px; color: #ccc">oh-my-zsh</a> <a href="/tags/osx/" style="font-size: 12px; color: #ccc">osx</a> <a href="/tags/runtime-permissions/" style="font-size: 12px; color: #ccc">runtime permissions</a> <a href="/tags/zsh/" style="font-size: 18px; color: #8e8e8e">zsh</a> <a href="/tags/安全/" style="font-size: 12px; color: #ccc">安全</a> <a href="/tags/混淆/" style="font-size: 12px; color: #ccc">混淆</a>
         </div>
       </div>
     
@@ -326,14 +341,16 @@
                src="https://avatars2.githubusercontent.com/u/1214481?v=3&s=460"
                alt="Yohan Li" />
           <p class="site-author-name" itemprop="name">Yohan Li</p>
-          <p class="site-description motion-element" itemprop="description"></p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
         </div>
         <nav class="site-state motion-element">
         
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -351,7 +368,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -407,6 +424,8 @@
 
       
 
+      
+
     </div>
   </aside>
 
@@ -446,9 +465,13 @@
       </div>
     </footer>
 
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
   </div>
 
   
@@ -539,6 +562,7 @@
 
     </script>
   
+
 
 
 
@@ -666,6 +690,8 @@
 
   
 
+
+  
 
 </body>
 </html>

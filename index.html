@@ -27,6 +27,9 @@
 
 
 
+
+
+
   
   
   <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
@@ -45,6 +48,12 @@
   
 
   
+    
+      
+    
+
+    
+  
 
   
 
@@ -55,7 +64,7 @@
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Monda:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -98,7 +107,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Mist',
-    sidebar: {"position":"left","display":"hide"},
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -131,14 +140,18 @@
   
 
 
+
+
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
           m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
   ga('create', 'UA-28040601-2', 'auto');
   ga('send', 'pageview');
 </script>
+
+
 
 
 
@@ -159,27 +172,29 @@
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
 
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Yohan's chat</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yohan's chat</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
   </div>
-    
-      <p class="site-subtitle"></p>
-    
-</div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
 <nav class="site-nav">
@@ -277,20 +292,486 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yohan.li/2017/01/23/Android-Fragment-useful-notes/">
+    <link itemprop="mainEntityOfPage" href="http://yohan.li/2017/02/27/android-obfuscated-notes/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Yohan Li">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/1214481?v=3&s=460">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Yohan's chat">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Yohan's chat" src="">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yohan Li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/1214481?v=3&s=460">
     </span>
-  </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yohan's chat">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/27/android-obfuscated-notes/" itemprop="url">
+                  Android 混淆笔记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-27T15:32:20+08:00">
+                2017-02-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/02/27/android-obfuscated-notes/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/02/27/android-obfuscated-notes/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/02/27/android-obfuscated-notes/" class="leancloud_visitors" data-flag-title="Android 混淆笔记">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="命令"><a class="header-anchor" href="#命令">¶</a>命令</h2>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-keep</td>
+<td>防止类和成员被移除或者被重命名</td>
+</tr>
+<tr>
+<td>-keepnames</td>
+<td>保留类和类中的成员，防止它们被混淆，但当成员没有被引用时会被移除</td>
+</tr>
+<tr>
+<td>-keepclassmembers</td>
+<td>保留类中的成员，防止他们被混淆或移除</td>
+</tr>
+<tr>
+<td>-keepclassmembernames</td>
+<td>只保留类中的成员，防止它们被混淆，但当成员没有被引用时会被移除</td>
+</tr>
+<tr>
+<td>-keepclasseswithmembers</td>
+<td>保留类和类中的成员，防止它们被混淆或移除，前提这个类中的成员必须存在，如果不存在则还是会混淆</td>
+</tr>
+<tr>
+<td>-keepclasseswithmembernames</td>
+<td>保留类和类中的成员，防止它们被混淆，但当成员没有被引用时会被移除，前提是这个类中的成员必须存在，如果不存在则还是会混淆</td>
+</tr>
+</tbody>
+</table>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/27/android-obfuscated-notes/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yohan.li/2017/02/27/osx-useful-command/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yohan Li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/1214481?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yohan's chat">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/27/osx-useful-command/" itemprop="url">
+                  Mac 切换 bash 到 z shell
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-27T15:31:26+08:00">
+                2017-02-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/02/27/osx-useful-command/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/02/27/osx-useful-command/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/02/27/osx-useful-command/" class="leancloud_visitors" data-flag-title="Mac 切换 bash 到 z shell">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="切换shell到强大的zsh"><a class="header-anchor" href="#切换shell到强大的zsh">¶</a>切换shell到强大的zsh</h2>
+<p>mac系统默认使用的是bash，但是zsh更强大。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/27/osx-useful-command/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yohan.li/2017/02/22/zsh-and-iterm2-configuration/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yohan Li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/1214481?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yohan's chat">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/22/zsh-and-iterm2-configuration/" itemprop="url">
+                  zsh 配置和 iTerm2 常用功能
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-22T15:33:41+08:00">
+                2017-02-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/02/22/zsh-and-iterm2-configuration/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/02/22/zsh-and-iterm2-configuration/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/02/22/zsh-and-iterm2-configuration/" class="leancloud_visitors" data-flag-title="zsh 配置和 iTerm2 常用功能">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1>iTerm2常用功能</h1>
+<h2 id="光标移动"><a class="header-anchor" href="#光标移动">¶</a>光标移动</h2>
+<p><code>Ctrl+a</code> 光标移动到行首</p>
+<p><code>Ctrl+e</code> 光标移动到行末</p>
+<p><code>Ctrl+f</code> 前移一个字符</p>
+<p><code>Ctrl+b</code> 后退一个字符</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/22/zsh-and-iterm2-configuration/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yohan.li/2017/01/23/Android-Fragment-useful-notes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yohan Li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/1214481?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yohan's chat">
+    </span>
 
     
       <header class="post-header">
@@ -319,7 +800,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-23T15:47:19+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-23T15:47:19+08:00">
                 2017-01-23
               </time>
             
@@ -368,8 +849,6 @@
           
 
           
-
-          
           
              <span id="/2017/01/23/Android-Fragment-useful-notes/" class="leancloud_visitors" data-flag-title="Fragment 知识点">
                <span class="post-meta-divider">|</span>
@@ -381,6 +860,8 @@
                
                  <span class="leancloud-visitors-count"></span>
              </span>
+          
+
           
 
           
@@ -399,7 +880,7 @@
 
       
         
-          <p><code>Fragment</code>常见知识点整理。<br>
+          <p><code>Fragment</code>常见知识点整理。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/01/23/Android-Fragment-useful-notes/#more" rel="contents">
@@ -426,6 +907,8 @@
       
 
       
+
+      
       
         <div class="post-eof"></div>
       
@@ -443,20 +926,17 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yohan.li/2017/01/23/Android-Activity-and-Fragment-animation/">
+    <link itemprop="mainEntityOfPage" href="http://yohan.li/2017/01/23/Android-Activity-and-Fragment-animation/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Yohan Li">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/1214481?v=3&s=460">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Yohan's chat">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Yohan's chat" src="">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yohan Li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/1214481?v=3&s=460">
     </span>
-  </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yohan's chat">
+    </span>
 
     
       <header class="post-header">
@@ -485,7 +965,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-23T15:45:40+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-23T15:45:40+08:00">
                 2017-01-23
               </time>
             
@@ -534,8 +1014,6 @@
           
 
           
-
-          
           
              <span id="/2017/01/23/Android-Activity-and-Fragment-animation/" class="leancloud_visitors" data-flag-title="Activity 和 Fragment 跳转动画">
                <span class="post-meta-divider">|</span>
@@ -547,6 +1025,8 @@
                
                  <span class="leancloud-visitors-count"></span>
              </span>
+          
+
           
 
           
@@ -565,7 +1045,8 @@
 
       
         
-          <h2 id="Activity-转场动画"><a href="#Activity-转场动画" class="headerlink" title="Activity 转场动画"></a>Activity 转场动画</h2><p>Activity转场动画是是通过override<code>PendingTransition(int enterAnim, int exitAnim)</code>实现的。<br>
+          <h2 id="activity-转场动画"><a class="header-anchor" href="#activity-转场动画">¶</a>Activity 转场动画</h2>
+<p>Activity转场动画是是通过override<code>PendingTransition(int enterAnim, int exitAnim)</code>实现的。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/01/23/Android-Activity-and-Fragment-animation/#more" rel="contents">
@@ -592,6 +1073,8 @@
       
 
       
+
+      
       
         <div class="post-eof"></div>
       
@@ -609,20 +1092,17 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yohan.li/2017/01/23/git-useful-cmd/">
+    <link itemprop="mainEntityOfPage" href="http://yohan.li/2017/01/23/git-useful-cmd/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Yohan Li">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/1214481?v=3&s=460">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Yohan's chat">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Yohan's chat" src="">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yohan Li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/1214481?v=3&s=460">
     </span>
-  </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yohan's chat">
+    </span>
 
     
       <header class="post-header">
@@ -651,7 +1131,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-23T15:45:10+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-23T15:45:10+08:00">
                 2017-01-23
               </time>
             
@@ -700,8 +1180,6 @@
           
 
           
-
-          
           
              <span id="/2017/01/23/git-useful-cmd/" class="leancloud_visitors" data-flag-title="git 常用命令">
                <span class="post-meta-divider">|</span>
@@ -713,6 +1191,8 @@
                
                  <span class="leancloud-visitors-count"></span>
              </span>
+          
+
           
 
           
@@ -731,7 +1211,7 @@
 
       
         
-          <p>总结一下经常用到的git命令，持续更新。<br>
+          <p>总结一下经常用到的git命令，持续更新。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/01/23/git-useful-cmd/#more" rel="contents">
@@ -758,6 +1238,8 @@
       
 
       
+
+      
       
         <div class="post-eof"></div>
       
@@ -775,20 +1257,17 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yohan.li/2017/01/23/Android-runtime-permissions/">
+    <link itemprop="mainEntityOfPage" href="http://yohan.li/2017/01/23/Android-runtime-permissions/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Yohan Li">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/1214481?v=3&s=460">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Yohan's chat">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Yohan's chat" src="">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yohan Li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/1214481?v=3&s=460">
     </span>
-  </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yohan's chat">
+    </span>
 
     
       <header class="post-header">
@@ -817,7 +1296,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-23T15:38:28+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-23T15:38:28+08:00">
                 2017-01-23
               </time>
             
@@ -866,8 +1345,6 @@
           
 
           
-
-          
           
              <span id="/2017/01/23/Android-runtime-permissions/" class="leancloud_visitors" data-flag-title="Android 运行时权限">
                <span class="post-meta-divider">|</span>
@@ -879,6 +1356,8 @@
                
                  <span class="leancloud-visitors-count"></span>
              </span>
+          
+
           
 
           
@@ -898,7 +1377,7 @@
       
         
           <p>在Android6.0（API-23）以上且 targetSdkVersion 是23时申请危险权限需要动态申请。</p>
-<p>如果设备运行的是 Android 5.1（API 级别 22）或更低版本，并且应用的 targetSdkVersion 是 22 或更低版本则不需要申请权限。<br>
+<p>如果设备运行的是 Android 5.1（API 级别 22）或更低版本，并且应用的 targetSdkVersion 是 22 或更低版本则不需要申请权限。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/01/23/Android-runtime-permissions/#more" rel="contents">
@@ -925,6 +1404,8 @@
       
 
       
+
+      
       
         <div class="post-eof"></div>
       
@@ -942,20 +1423,17 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yohan.li/2014/05/22/activity-singletask-and-singleinstance/">
+    <link itemprop="mainEntityOfPage" href="http://yohan.li/2014/05/22/activity-singletask-and-singleinstance/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Yohan Li">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/1214481?v=3&s=460">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Yohan's chat">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Yohan's chat" src="">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yohan Li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/1214481?v=3&s=460">
     </span>
-  </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yohan's chat">
+    </span>
 
     
       <header class="post-header">
@@ -984,7 +1462,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-05-22T17:40:44+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-05-22T17:40:44+08:00">
                 2014-05-22
               </time>
             
@@ -1033,8 +1511,6 @@
           
 
           
-
-          
           
              <span id="/2014/05/22/activity-singletask-and-singleinstance/" class="leancloud_visitors" data-flag-title="Activity启动模式之SingleTask和SingleInstance">
                <span class="post-meta-divider">|</span>
@@ -1046,6 +1522,8 @@
                
                  <span class="leancloud-visitors-count"></span>
              </span>
+          
+
           
 
           
@@ -1064,7 +1542,7 @@
 
       
         
-          <p><code>standard</code>和<code>singleTop</code>的启动模式相对简单就不再说什么了，接下来主要是说<code>singleTask</code>和<code>singleInstance</code>。<br>
+          <p><code>standard</code>和<code>singleTop</code>的启动模式相对简单就不再说什么了，接下来主要是说<code>singleTask</code>和<code>singleInstance</code>。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2014/05/22/activity-singletask-and-singleinstance/#more" rel="contents">
@@ -1091,6 +1569,8 @@
       
 
       
+
+      
       
         <div class="post-eof"></div>
       
@@ -1108,20 +1588,17 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yohan.li/2014/05/19/android-activity-lifecycle-transform/">
+    <link itemprop="mainEntityOfPage" href="http://yohan.li/2014/05/19/android-activity-lifecycle-transform/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Yohan Li">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/1214481?v=3&s=460">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Yohan's chat">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Yohan's chat" src="">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yohan Li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/1214481?v=3&s=460">
     </span>
-  </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yohan's chat">
+    </span>
 
     
       <header class="post-header">
@@ -1150,7 +1627,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-05-19T15:45:46+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-05-19T15:45:46+08:00">
                 2014-05-19
               </time>
             
@@ -1199,8 +1676,6 @@
           
 
           
-
-          
           
              <span id="/2014/05/19/android-activity-lifecycle-transform/" class="leancloud_visitors" data-flag-title="Android Activity生命周期的转换">
                <span class="post-meta-divider">|</span>
@@ -1212,6 +1687,8 @@
                
                  <span class="leancloud-visitors-count"></span>
              </span>
+          
+
           
 
           
@@ -1230,7 +1707,7 @@
 
       
         
-          <p>当一个activity启动另一个activiy，它们同时都经历生命周期的转换。这时候第一个activity暂停（<code>onPause()</code>）然后停止（<code>onStop()</code>）（如果它仍然在后台可见的话，这个activity不会停止（<code>onStop()</code>）），同时另一个activity被创建。如果把这些activity的活动数据保存起来的话对于理解两个activity的协调工作非常重要，真实的情况并不是第一个activity在第二个activity启动之后完全停止了，而是第二个activity启动和第一个activity停止的进程重叠了。<br>
+          <p>当一个activity启动另一个activiy，它们同时都经历生命周期的转换。这时候第一个activity暂停（<code>onPause()</code>）然后停止（<code>onStop()</code>）（如果它仍然在后台可见的话，这个activity不会停止（<code>onStop()</code>）），同时另一个activity被创建。如果把这些activity的活动数据保存起来的话对于理解两个activity的协调工作非常重要，真实的情况并不是第一个activity在第二个activity启动之后完全停止了，而是第二个activity启动和第一个activity停止的进程重叠了。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2014/05/19/android-activity-lifecycle-transform/#more" rel="contents">
@@ -1257,6 +1734,8 @@
       
 
       
+
+      
       
         <div class="post-eof"></div>
       
@@ -1274,20 +1753,17 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yohan.li/2014/03/10/android-support-different-screen/">
+    <link itemprop="mainEntityOfPage" href="http://yohan.li/2014/03/10/android-support-different-screen/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Yohan Li">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/1214481?v=3&s=460">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Yohan's chat">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Yohan's chat" src="">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yohan Li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/1214481?v=3&s=460">
     </span>
-  </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yohan's chat">
+    </span>
 
     
       <header class="post-header">
@@ -1316,7 +1792,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-03-10T17:46:53+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-03-10T17:46:53+08:00">
                 2014-03-10
               </time>
             
@@ -1365,8 +1841,6 @@
           
 
           
-
-          
           
              <span id="/2014/03/10/android-support-different-screen/" class="leancloud_visitors" data-flag-title="Android适配不同分辨率（译）">
                <span class="post-meta-divider">|</span>
@@ -1378,6 +1852,8 @@
                
                  <span class="leancloud-visitors-count"></span>
              </span>
+          
+
           
 
           
@@ -1396,7 +1872,7 @@
 
       
         
-          <p>Android 一般用两种属性来识别设备的屏幕：尺寸和像素密度。你应该期望你自己的app能够以合适的尺寸和像素密度安装到设备上。因此，你应该包含一些额外的资源为不同尺寸和像素密度的设备来优化你程序的外观。<br>
+          <p>Android 一般用两种属性来识别设备的屏幕：尺寸和像素密度。你应该期望你自己的app能够以合适的尺寸和像素密度安装到设备上。因此，你应该包含一些额外的资源为不同尺寸和像素密度的设备来优化你程序的外观。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2014/03/10/android-support-different-screen/#more" rel="contents">
@@ -1420,503 +1896,6 @@
     <footer class="post-footer">
       
 
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yohan.li/2014/03/04/java-bubblesort/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Yohan Li">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/1214481?v=3&s=460">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Yohan's chat">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Yohan's chat" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/04/java-bubblesort/" itemprop="url">
-                  Java冒泡排序
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-03-04T17:49:47+08:00">
-                2014-03-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2014/03/04/java-bubblesort/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/04/java-bubblesort/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2014/03/04/java-bubblesort/" class="leancloud_visitors" data-flag-title="Java冒泡排序">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>今天回顾了一下冒泡排序，到网上一搜答案很多都是像下面这样的<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2014/03/04/java-bubblesort/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yohan.li/2014/03/04/ndk-donwload-and-install/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Yohan Li">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/1214481?v=3&s=460">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Yohan's chat">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Yohan's chat" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/04/ndk-donwload-and-install/" itemprop="url">
-                  NDK的下载和安装
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-03-04T17:49:00+08:00">
-                2014-03-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2014/03/04/ndk-donwload-and-install/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/04/ndk-donwload-and-install/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2014/03/04/ndk-donwload-and-install/" class="leancloud_visitors" data-flag-title="NDK的下载和安装">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="NDK的下载和安装"><a href="#NDK的下载和安装" class="headerlink" title="NDK的下载和安装"></a>NDK的下载和安装</h1><blockquote>
-<p>注意：这里只是针对ndk版本为 “Android NDK, Revision 8e”的介绍，操作系统为Windows。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2014/03/04/ndk-donwload-and-install/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yohan.li/2014/03/04/activity-singletask/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Yohan Li">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/1214481?v=3&s=460">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Yohan's chat">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Yohan's chat" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/04/activity-singletask/" itemprop="url">
-                  Activity启动模式之SingleTask
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-03-04T17:48:10+08:00">
-                2014-03-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2014/03/04/activity-singletask/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/04/activity-singletask/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2014/03/04/activity-singletask/" class="leancloud_visitors" data-flag-title="Activity启动模式之SingleTask">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Android本身的activity启动模式分为四种<code>standard</code>、<code>singleTop</code>、<code>singleTask</code>和<code>singleInstance</code>。由于标准启动模式和<code>singleTop</code>比较简单，所以不再记录。接下来就看看<code>singleTask</code>。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2014/03/04/activity-singletask/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
       
 
       
@@ -1970,14 +1949,16 @@
                src="https://avatars2.githubusercontent.com/u/1214481?v=3&s=460"
                alt="Yohan Li" />
           <p class="site-author-name" itemprop="name">Yohan Li</p>
-          <p class="site-description motion-element" itemprop="description"></p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
         </div>
         <nav class="site-state motion-element">
         
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1995,7 +1976,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -2051,6 +2032,8 @@
 
       
 
+      
+
     </div>
   </aside>
 
@@ -2090,9 +2073,13 @@
       </div>
     </footer>
 
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
   </div>
 
   
@@ -2183,6 +2170,7 @@
 
     </script>
   
+
 
 
 
@@ -2310,6 +2298,8 @@
 
   
 
+
+  
 
 </body>
 </html>

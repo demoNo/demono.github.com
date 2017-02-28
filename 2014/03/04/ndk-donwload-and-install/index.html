@@ -27,6 +27,9 @@
 
 
 
+
+
+
   
   
   <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
@@ -45,6 +48,12 @@
   
 
   
+    
+      
+    
+
+    
+  
 
   
 
@@ -55,7 +64,7 @@
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Monda:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -85,13 +94,15 @@
 
 
 <meta name="description" content="NDK的下载和安装
-注意：这里只是针对ndk版本为 “Android NDK, Revision 8e”的介绍，操作系统为Windows。">
+
+注意：这里只是针对ndk版本为 &amp;quot;Android NDK, Revision 8e&amp;quot;的介绍，操作系统为Windows。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NDK的下载和安装">
 <meta property="og:url" content="http://yohan.li/2014/03/04/ndk-donwload-and-install/index.html">
 <meta property="og:site_name" content="Yohan's chat">
 <meta property="og:description" content="NDK的下载和安装
-注意：这里只是针对ndk版本为 “Android NDK, Revision 8e”的介绍，操作系统为Windows。">
+
+注意：这里只是针对ndk版本为 &amp;quot;Android NDK, Revision 8e&amp;quot;的介绍，操作系统为Windows。">
 <meta property="og:image" content="http://media.tumblr.com/4c3030d014e19e66e59ce0721772b56f/tumblr_inline_mnya77Ypps1qz4rgp.jpg">
 <meta property="og:image" content="http://media.tumblr.com/1723b7c246c71536251cc20edb595e08/tumblr_inline_mnya8jdgV51qz4rgp.png">
 <meta property="og:image" content="http://media.tumblr.com/bf23fe1912893bd813702a29d0978ad0/tumblr_inline_mnytj05S3n1qz4rgp.png">
@@ -99,7 +110,8 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NDK的下载和安装">
 <meta name="twitter:description" content="NDK的下载和安装
-注意：这里只是针对ndk版本为 “Android NDK, Revision 8e”的介绍，操作系统为Windows。">
+
+注意：这里只是针对ndk版本为 &amp;quot;Android NDK, Revision 8e&amp;quot;的介绍，操作系统为Windows。">
 <meta name="twitter:image" content="http://media.tumblr.com/4c3030d014e19e66e59ce0721772b56f/tumblr_inline_mnya77Ypps1qz4rgp.jpg">
 
 
@@ -109,7 +121,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Mist',
-    sidebar: {"position":"left","display":"hide"},
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -142,14 +154,18 @@
   
 
 
+
+
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
           m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
   ga('create', 'UA-28040601-2', 'auto');
   ga('send', 'pageview');
 </script>
+
+
 
 
 
@@ -168,27 +184,29 @@
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
 
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Yohan's chat</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yohan's chat</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
   </div>
-    
-      <p class="site-subtitle"></p>
-    
-</div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
 <nav class="site-nav">
@@ -286,20 +304,17 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yohan.li/2014/03/04/ndk-donwload-and-install/">
+    <link itemprop="mainEntityOfPage" href="http://yohan.li/2014/03/04/ndk-donwload-and-install/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Yohan Li">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/1214481?v=3&s=460">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Yohan's chat">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Yohan's chat" src="">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yohan Li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/1214481?v=3&s=460">
     </span>
-  </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yohan's chat">
+    </span>
 
     
       <header class="post-header">
@@ -325,7 +340,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-03-04T17:49:00+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-03-04T17:49:00+08:00">
                 2014-03-04
               </time>
             
@@ -374,8 +389,6 @@
           
 
           
-
-          
           
              <span id="/2014/03/04/ndk-donwload-and-install/" class="leancloud_visitors" data-flag-title="NDK的下载和安装">
                <span class="post-meta-divider">|</span>
@@ -393,6 +406,8 @@
 
           
 
+          
+
         </div>
       </header>
     
@@ -404,29 +419,37 @@
       
 
       
-        <h1 id="NDK的下载和安装"><a href="#NDK的下载和安装" class="headerlink" title="NDK的下载和安装"></a>NDK的下载和安装</h1><blockquote>
-<p>注意：这里只是针对ndk版本为 “Android NDK, Revision 8e”的介绍，操作系统为Windows。<br><a id="more"></a></p>
+        <h1>NDK的下载和安装</h1>
+<blockquote>
+<p>注意：这里只是针对ndk版本为 &quot;Android NDK, Revision 8e&quot;的介绍，操作系统为Windows。</p>
 </blockquote>
-<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>首先去官网<a href="http://developer.android.com/tools/sdk/ndk/index.html" target="_blank" rel="external">android ndk</a>下载Android ndk。如下图选择合适的包。</p>
+<a id="more"></a>
+<h2 id="下载"><a class="header-anchor" href="#下载">¶</a>下载</h2>
+<p>首先去官网<a href="http://developer.android.com/tools/sdk/ndk/index.html" target="_blank" rel="external">android ndk</a>下载Android ndk。如下图选择合适的包。</p>
 <p><img src="http://media.tumblr.com/4c3030d014e19e66e59ce0721772b56f/tumblr_inline_mnya77Ypps1qz4rgp.jpg" alt=""></p>
-<p>这里选择Windows版的。下载完之后解压缩到C盘，当然也可以解压到其他目录。<br>接下来需要安装cygwin。下载<a href="http://www.cygwin.com/setup.exe" target="_blank" rel="external">cygwin</a>，版本必须是1.7以上。在cygwin选择所需要安装的包时如下图选择。</p>
+<p>这里选择Windows版的。下载完之后解压缩到C盘，当然也可以解压到其他目录。<br>
+接下来需要安装cygwin。下载<a href="http://www.cygwin.com/setup.exe" target="_blank" rel="external">cygwin</a>，版本必须是1.7以上。在cygwin选择所需要安装的包时如下图选择。</p>
 <p><img src="http://media.tumblr.com/1723b7c246c71536251cc20edb595e08/tumblr_inline_mnya8jdgV51qz4rgp.png" alt=""></p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>接下来一直下一步直到完成安装。</p>
+<h2 id="安装"><a class="header-anchor" href="#安装">¶</a>安装</h2>
+<p>接下来一直下一步直到完成安装。</p>
 <blockquote>
 <p>！注意接下来这步不是必须的。</p>
 </blockquote>
-<p>为了使用方便我们需要简单的配置一下cwygin。在cygwin的根目录下找到home文件夹并在里面找到以自己登录名命名的文件夹，进去之后找到<strong>.bash_profile</strong>(如果不存在的话新建一个)文件，用文本编辑器打开然后填入以下内容</p>
+<p>为了使用方便我们需要简单的配置一下cwygin。在cygwin的根目录下找到home文件夹并在里面找到以自己登录名命名的文件夹，进去之后找到**.bash_profile**(如果不存在的话新建一个)文件，用文本编辑器打开然后填入以下内容</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ANDROID_NDK_ROOT=/cygdrive/c/android-ndk-r8e</div><div class="line"><span class="built_in">export</span> ANDROID_NDK_ROOT</div></pre></td></tr></table></figure>
-<p>这里的<strong><code>c/android-ndk-r8e</code></strong>是指自己的ndk安装路径，我这里是C盘，所以这样写，前面的<strong><code>/cygdrive/</code></strong>是cygwin访问本地磁盘目录必带前缀，我们可以把它看成是Windows的根目录。</p>
-<h2 id="构建"><a href="#构建" class="headerlink" title="构建"></a>构建</h2><p>这样每次使用cygwin进行build的时候就方便一点了。如下在cygwin中输入</p>
+<p>这里的**<code>c/android-ndk-r8e</code><strong>是指自己的ndk安装路径，我这里是C盘，所以这样写，前面的</strong><code>/cygdrive/</code>**是cygwin访问本地磁盘目录必带前缀，我们可以把它看成是Windows的根目录。</p>
+<h2 id="构建"><a class="header-anchor" href="#构建">¶</a>构建</h2>
+<p>这样每次使用cygwin进行build的时候就方便一点了。如下在cygwin中输入</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> [你的工程所在路径] 例如 <span class="built_in">cd</span> /cygdrive/d/workspace/Ndk_example</div><div class="line"><span class="variable">$ANDROID_NDK_ROOT</span>/ndk-build</div></pre></td></tr></table></figure>
-<p>执行完上面的命令之后刷新工程就能看见新生成的<code>.so</code>文件，就是编译好的库文件。<br>接下来需要返回来编写Android工程。在eclipse中新建Android工程，和普通Android工程不同的是需要在根目录中添加jni目录。整个目录结构如下：</p>
+<p>执行完上面的命令之后刷新工程就能看见新生成的<code>.so</code>文件，就是编译好的库文件。<br>
+接下来需要返回来编写Android工程。在eclipse中新建Android工程，和普通Android工程不同的是需要在根目录中添加jni目录。整个目录结构如下：</p>
 <p><img src="http://media.tumblr.com/bf23fe1912893bd813702a29d0978ad0/tumblr_inline_mnytj05S3n1qz4rgp.png" alt=""></p>
 <p>MainActivity.java内容如下</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</div><div class="line"><span class="keyword">private</span> TextView tv;</div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">	<span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">	setContentView(R.layout.activity_main);</div><div class="line">	tv = (TextView) findViewById(R.id.test);</div><div class="line">	tv.setText(say());<span class="comment">//调用本地方法</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">static</span> &#123;</div><div class="line">	System.loadLibrary(<span class="string">"hello"</span>);<span class="comment">//加载本地库</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">native</span> String <span class="title">say</span><span class="params">()</span></span>;<span class="comment">//待实现的本地方法</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>hello.c内容如下</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;jni.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function">jstring <span class="title">Java_com_example_ndkexample_MainActivity_say</span><span class="params">(JNIEnv* env, jobject javaThis)</span> </span>&#123;</div><div class="line">  <span class="keyword">return</span> (*env)-&gt;NewStringUTF(env, <span class="string">"Hello from native code!"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>c文件中对Java定义的本地方法的实现中，函数名必须对应起来，比如现在我的包名为<br><code>com.example.ndkexample</code> 方法名为<code>say</code>，返回值为<code>String</code>，则对应的c中函数定义则为<code>jstring Java_com_example_ndkexample_MainActivity_say</code>函数中的两个参数是固定的，如果Java中的方法有参数，则对应的c函数中也会添加。一般Java中的基本类型在c中对应的类型为前面加<code>j</code>，比如<code>String -&gt; jstring</code>。</p>
+<p>c文件中对Java定义的本地方法的实现中，函数名必须对应起来，比如现在我的包名为<br>
+<code>com.example.ndkexample</code> 方法名为<code>say</code>，返回值为<code>String</code>，则对应的c中函数定义则为<code>jstring Java_com_example_ndkexample_MainActivity_say</code>函数中的两个参数是固定的，如果Java中的方法有参数，则对应的c函数中也会添加。一般Java中的基本类型在c中对应的类型为前面加<code>j</code>，比如<code>String -&gt; jstring</code>。</p>
 <p>Android.mk内容如下</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">LOCAL_PATH := $(<span class="keyword">call</span> my-dir)</div><div class="line"><span class="keyword">include</span> $(CLEAR_VARS)</div><div class="line"># Here we give our <span class="keyword">module</span> <span class="keyword">name</span> <span class="keyword">and</span> <span class="keyword">source</span> <span class="keyword">file</span>(s)</div><div class="line">LOCAL_MODULE    := hello</div><div class="line">LOCAL_SRC_FILES := hello.c</div><div class="line"><span class="keyword">include</span> $(BUILD_SHARED_LIBRARY)</div></pre></td></tr></table></figure>
 <p>接下来我们执行上面的提到的<code>build</code>命令就能生成对应的库文件了。</p>
@@ -461,6 +484,10 @@
             <a href="/tags/NDK/" rel="tag"># NDK</a>
           
         </div>
+      
+
+      
+        
       
 
       
@@ -549,14 +576,16 @@
                src="https://avatars2.githubusercontent.com/u/1214481?v=3&s=460"
                alt="Yohan Li" />
           <p class="site-author-name" itemprop="name">Yohan Li</p>
-          <p class="site-description motion-element" itemprop="description"></p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
         </div>
         <nav class="site-state motion-element">
         
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -574,7 +603,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -638,12 +667,14 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#NDK的下载和安装"><span class="nav-number">1.</span> <span class="nav-text">NDK的下载和安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载"><span class="nav-number">1.1.</span> <span class="nav-text">下载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构建"><span class="nav-number">1.3.</span> <span class="nav-text">构建</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">NDK的下载和安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载"><span class="nav-number">1.1.</span> <span class="nav-text">¶下载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.2.</span> <span class="nav-text">¶安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构建"><span class="nav-number">1.3.</span> <span class="nav-text">¶构建</span></a></li></ol></li></ol></div>
             
 
           </div>
         </section>
       <!--/noindex-->
+      
+
       
 
     </div>
@@ -685,9 +716,13 @@
       </div>
     </footer>
 
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
   </div>
 
   
@@ -789,6 +824,7 @@
 
     </script>
   
+
 
 
 
@@ -916,6 +952,8 @@
 
   
 
+
+  
 
 </body>
 </html>

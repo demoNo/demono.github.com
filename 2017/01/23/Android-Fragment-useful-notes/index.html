@@ -27,6 +27,9 @@
 
 
 
+
+
+
   
   
   <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
@@ -45,6 +48,12 @@
   
 
   
+    
+      
+    
+
+    
+  
 
   
 
@@ -55,7 +64,7 @@
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Monda:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -104,7 +113,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Mist',
-    sidebar: {"position":"left","display":"hide"},
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -137,14 +146,18 @@
   
 
 
+
+
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
           m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
   ga('create', 'UA-28040601-2', 'auto');
   ga('send', 'pageview');
 </script>
+
+
 
 
 
@@ -163,27 +176,29 @@
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
 
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Yohan's chat</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yohan's chat</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
   </div>
-    
-      <p class="site-subtitle"></p>
-    
-</div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
 <nav class="site-nav">
@@ -281,20 +296,17 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yohan.li/2017/01/23/Android-Fragment-useful-notes/">
+    <link itemprop="mainEntityOfPage" href="http://yohan.li/2017/01/23/Android-Fragment-useful-notes/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Yohan Li">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/1214481?v=3&s=460">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Yohan's chat">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Yohan's chat" src="">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yohan Li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/1214481?v=3&s=460">
     </span>
-  </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yohan's chat">
+    </span>
 
     
       <header class="post-header">
@@ -320,7 +332,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-23T15:47:19+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-23T15:47:19+08:00">
                 2017-01-23
               </time>
             
@@ -369,8 +381,6 @@
           
 
           
-
-          
           
              <span id="/2017/01/23/Android-Fragment-useful-notes/" class="leancloud_visitors" data-flag-title="Fragment 知识点">
                <span class="post-meta-divider">|</span>
@@ -388,6 +398,8 @@
 
           
 
+          
+
         </div>
       </header>
     
@@ -399,22 +411,29 @@
       
 
       
-        <p><code>Fragment</code>常见知识点整理。<br><a id="more"></a></p>
-<h2 id="Fragment生命周期"><a href="#Fragment生命周期" class="headerlink" title="Fragment生命周期"></a>Fragment生命周期</h2><p><img src="https://developer.android.google.cn/images/fragment_lifecycle.png" alt="image"></p>
-<h2 id="创建Fragment"><a href="#创建Fragment" class="headerlink" title="创建Fragment"></a>创建Fragment</h2><p>创建<code>Fragment</code>一般有两种方式，在xml中定义和动态创建，我们通常使用动态创建的方式。并且传参是通过<code>setArguments()</code>来完成，这样在应用重启时可以通过<code>savedInstanceState</code>获取完整的参数值。</p>
+        <p><code>Fragment</code>常见知识点整理。</p>
+<a id="more"></a>
+<h2 id="fragment生命周期"><a class="header-anchor" href="#fragment生命周期">¶</a>Fragment生命周期</h2>
+<p><img src="https://developer.android.google.cn/images/fragment_lifecycle.png" alt="image"></p>
+<h2 id="创建fragment"><a class="header-anchor" href="#创建fragment">¶</a>创建Fragment</h2>
+<p>创建<code>Fragment</code>一般有两种方式，在xml中定义和动态创建，我们通常使用动态创建的方式。并且传参是通过<code>setArguments()</code>来完成，这样在应用重启时可以通过<code>savedInstanceState</code>获取完整的参数值。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> xxxFragment <span class="title">newInstance</span><span class="params">(String arg)</span> </span>&#123;</div><div class="line">    Bundle args = <span class="keyword">new</span> Bundle();</div><div class="line">    args.putString(ARG, arg);</div><div class="line">    xxxFragment fragment = <span class="keyword">new</span> xxxFragment();</div><div class="line">    fragment.setArguments(args);</div><div class="line">    <span class="keyword">return</span> fragment;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="在Fragment中获取宿主Activity"><a href="#在Fragment中获取宿主Activity" class="headerlink" title="在Fragment中获取宿主Activity"></a>在<code>Fragment</code>中获取宿主<code>Activity</code></h2><p>通常情况下我们会通过getActivity()来获取宿主<code>Activity</code>，但是某些情况下这个方法会返回<code>null</code>，所以兼容的方法就是在<code>onAttach()</code>方法中赋值然后获取。</p>
+<h2 id="在fragment中获取宿主activity"><a class="header-anchor" href="#在fragment中获取宿主activity">¶</a>在<code>Fragment</code>中获取宿主<code>Activity</code></h2>
+<p>通常情况下我们会通过getActivity()来获取宿主<code>Activity</code>，但是某些情况下这个方法会返回<code>null</code>，所以兼容的方法就是在<code>onAttach()</code>方法中赋值然后获取。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAttach</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">    <span class="keyword">super</span>.onAttach(context);</div><div class="line">    mAcivity = (Activity) context;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="back-stack对Fragment生命周期的影响"><a href="#back-stack对Fragment生命周期的影响" class="headerlink" title="back stack对Fragment生命周期的影响"></a><code>back stack</code>对Fragment生命周期的影响</h2><ul>
+<h2 id="back-stack对fragment生命周期的影响"><a class="header-anchor" href="#back-stack对fragment生命周期的影响">¶</a><code>back stack</code>对Fragment生命周期的影响</h2>
+<ul>
 <li>没有加入后退栈的<code>Fragment</code>在<code>remove</code>或者被<code>replace</code>的时候会完整的走完生命周期直到<code>onDetach()</code>。</li>
 <li>加入后退栈的<code>Fragment</code>在<code>remove</code>或者<code>replace</code>的时候只会走到<code>onDestoryView()</code>，当<code>popEnter</code>的时候会从<code>onCreateView()</code>走到<code>onResume</code>。</li>
 </ul>
-<h2 id="hide，show方法的特别之处"><a href="#hide，show方法的特别之处" class="headerlink" title="hide，show方法的特别之处"></a><code>hide</code>，<code>show</code>方法的特别之处</h2><ul>
+<h2 id="hide-show方法的特别之处"><a class="header-anchor" href="#hide-show方法的特别之处">¶</a><code>hide</code>，<code>show</code>方法的特别之处</h2>
+<ul>
 <li><code>hide</code>和<code>show</code>方法不会触发<code>Fragment</code>生命周期的变化，只会触发<code>onHiddenChanged()</code>方法。</li>
 <li>创建<code>Fragment</code>不会触发<code>onHiddenChanged()</code>方法。</li>
 <li>只有已经存在的<code>Fragment</code>才能调用<code>hide</code>，<code>show</code>方法。</li>
 </ul>
-<h2 id="其他注意事项"><a href="#其他注意事项" class="headerlink" title="其他注意事项"></a>其他注意事项</h2><ul>
+<h2 id="其他注意事项"><a class="header-anchor" href="#其他注意事项">¶</a>其他注意事项</h2>
+<ul>
 <li>当<code>Fragment</code>只调用<code>add</code>没有调用<code>remove</code>或者<code>replace</code>的时候，如果这时候宿主<code>Activity</code>生命周期变化的话，其中所有<code>add</code>进来的<code>Fragment</code>的生命周期都会相应的变化，<code>Activity#onStop()</code>的时候<code>Fragment#onStop()</code>也会执行，其他生命周期类似。<strong>需要注意的是<code>Fragment</code>执行的顺序是按照<code>add</code>进去的顺序执行的。</strong></li>
 </ul>
 <blockquote>
@@ -454,6 +473,10 @@
       
 
       
+        
+      
+
+      
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
@@ -466,6 +489,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/22/zsh-and-iterm2-configuration/" rel="prev" title="zsh 配置和 iTerm2 常用功能">
+                zsh 配置和 iTerm2 常用功能 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -535,14 +562,16 @@
                src="https://avatars2.githubusercontent.com/u/1214481?v=3&s=460"
                alt="Yohan Li" />
           <p class="site-author-name" itemprop="name">Yohan Li</p>
-          <p class="site-description motion-element" itemprop="description"></p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
         </div>
         <nav class="site-state motion-element">
         
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -560,7 +589,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -624,12 +653,14 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Fragment生命周期"><span class="nav-number">1.</span> <span class="nav-text">Fragment生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建Fragment"><span class="nav-number">2.</span> <span class="nav-text">创建Fragment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在Fragment中获取宿主Activity"><span class="nav-number">3.</span> <span class="nav-text">在Fragment中获取宿主Activity</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#back-stack对Fragment生命周期的影响"><span class="nav-number">4.</span> <span class="nav-text">back stack对Fragment生命周期的影响</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hide，show方法的特别之处"><span class="nav-number">5.</span> <span class="nav-text">hide，show方法的特别之处</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他注意事项"><span class="nav-number">6.</span> <span class="nav-text">其他注意事项</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#fragment生命周期"><span class="nav-number">1.</span> <span class="nav-text">¶Fragment生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建fragment"><span class="nav-number">2.</span> <span class="nav-text">¶创建Fragment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在fragment中获取宿主activity"><span class="nav-number">3.</span> <span class="nav-text">¶在Fragment中获取宿主Activity</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#back-stack对fragment生命周期的影响"><span class="nav-number">4.</span> <span class="nav-text">¶back stack对Fragment生命周期的影响</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hide-show方法的特别之处"><span class="nav-number">5.</span> <span class="nav-text">¶hide，show方法的特别之处</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他注意事项"><span class="nav-number">6.</span> <span class="nav-text">¶其他注意事项</span></a></li></ol></div>
             
 
           </div>
         </section>
       <!--/noindex-->
+      
+
       
 
     </div>
@@ -671,9 +702,13 @@
       </div>
     </footer>
 
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
   </div>
 
   
@@ -775,6 +810,7 @@
 
     </script>
   
+
 
 
 
@@ -902,6 +938,8 @@
 
   
 
+
+  
 
 </body>
 </html>
