@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="git," />
+  <meta name="keywords" content="Android,Gradle," />
 
 
 
@@ -93,16 +93,19 @@
 
 
 
-<meta name="description" content="总结一下经常用到的git命令，持续更新。">
+<meta name="description" content="背景
+现如今 Android 项目都是用 build.grale 来配置的，项目中一般包含多个 module，这样就会同时存在多个 build.gradle 文件，这时候如果要升级整个项目的 api 版本就需要手动改，会很麻烦，特别是module特别多的时候。下面就是解决这个问题的一些方法。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git 常用命令">
-<meta property="og:url" content="http://yohan.li/2017/01/23/git-useful-cmd/index.html">
+<meta property="og:title" content="管理 Android 项目里的 build.gradle">
+<meta property="og:url" content="http://yohan.li/2017/03/03/android-manage-gradle-file/index.html">
 <meta property="og:site_name" content="Yohan's chat">
-<meta property="og:description" content="总结一下经常用到的git命令，持续更新。">
-<meta property="og:updated_time" content="2017-01-23T07:53:26.000Z">
+<meta property="og:description" content="背景
+现如今 Android 项目都是用 build.grale 来配置的，项目中一般包含多个 module，这样就会同时存在多个 build.gradle 文件，这时候如果要升级整个项目的 api 版本就需要手动改，会很麻烦，特别是module特别多的时候。下面就是解决这个问题的一些方法。">
+<meta property="og:updated_time" content="2017-03-03T10:18:18.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git 常用命令">
-<meta name="twitter:description" content="总结一下经常用到的git命令，持续更新。">
+<meta name="twitter:title" content="管理 Android 项目里的 build.gradle">
+<meta name="twitter:description" content="背景
+现如今 Android 项目都是用 build.grale 来配置的，项目中一般包含多个 module，这样就会同时存在多个 build.gradle 文件，这时候如果要升级整个项目的 api 版本就需要手动改，会很麻烦，特别是module特别多的时候。下面就是解决这个问题的一些方法。">
 
 
 
@@ -130,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://yohan.li/2017/01/23/git-useful-cmd/"/>
+  <link rel="canonical" href="http://yohan.li/2017/03/03/android-manage-gradle-file/"/>
 
 
 
 
 
-  <title> git 常用命令 | Yohan's chat </title>
+  <title> 管理 Android 项目里的 build.gradle | Yohan's chat </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -294,7 +297,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yohan.li/2017/01/23/git-useful-cmd/">
+    <link itemprop="mainEntityOfPage" href="http://yohan.li/2017/03/03/android-manage-gradle-file/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yohan Li">
@@ -315,7 +318,7 @@
             
             
               
-                git 常用命令
+                管理 Android 项目里的 build.gradle
               
             
           </h1>
@@ -330,8 +333,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-23T15:45:10+08:00">
-                2017-01-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-03T15:29:20+08:00">
+                2017-03-03
               </time>
             
 
@@ -341,28 +344,6 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/git/" itemprop="url" rel="index">
-                    <span itemprop="name">git</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -371,8 +352,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/01/23/git-useful-cmd/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/01/23/git-useful-cmd/" itemprop="commentCount"></span>
+                <a href="/2017/03/03/android-manage-gradle-file/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/03/03/android-manage-gradle-file/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -380,7 +361,7 @@
 
           
           
-             <span id="/2017/01/23/git-useful-cmd/" class="leancloud_visitors" data-flag-title="git 常用命令">
+             <span id="/2017/03/03/android-manage-gradle-file/" class="leancloud_visitors" data-flag-title="管理 Android 项目里的 build.gradle">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -409,57 +390,56 @@
       
 
       
-        <p>总结一下经常用到的git命令，持续更新。</p>
+        <h1>背景</h1>
+<p>现如今 Android 项目都是用 build.grale 来配置的，项目中一般包含多个 module，这样就会同时存在多个 build.gradle 文件，这时候如果要升级整个项目的 api 版本就需要手动改，会很麻烦，特别是module特别多的时候。下面就是解决这个问题的一些方法。</p>
 <a id="more"></a>
-<ul>
-<li>创建远程仓库<code>git remote add [remote name] [url]</code></li>
-</ul>
-<h2 id="git-push"><a class="header-anchor" href="#git-push">¶</a><code>git push</code></h2>
-<ul>
-<li>推送到远程<code>git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;</code></li>
-</ul>
 <blockquote>
-<p>如果省略远程分支名，则表示将本地分支推送与之存在&quot;追踪关系&quot;的远程分支（通常两者同名），如果该远程分支不存在，则会被新建。如果当前分支和远程分支存在追踪关系则可以直接<code>git push origin</code></p>
+<p>当然每个 module 可以有自己的支持库的版本和 compileSdk 等等版本号，这篇文章只是针对想统一整个项目构建工具、编译sdk、支持库版本号对应的一些方法。</p>
 </blockquote>
+<h1>配置支持库和编译相关的版本号</h1>
+<p>在我的项目中经常会在 app module 和其他 module 中存在很多支持库，比如<code>com.android.support:appcompat-v7</code> <code>com.android.support:support-v4</code>包等支持库，而他们的版本号经常会更新，一般新的版本会修复一些 bug 并带来一些新的特性和提升性能，所以建议更新到最新版。</p>
 <ul>
-<li>删除远程分支</li>
+<li>
+<p>把所有支持库配置存在一个文件中</p>
+<p>在项目根目录下创建<code>gradleScript</code>文件夹并在此文件夹下创建<code>dependencies.gradle</code>文件，如下</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">root</div><div class="line">  <span class="string">|-app</span></div><div class="line">  <span class="string">|-module1</span></div><div class="line">  <span class="string">|-module2</span></div><div class="line">  <span class="string">|-gradleScript</span></div><div class="line">	<span class="string">|-dependencies.gradle</span></div></pre></td></tr></table></figure>
+<p><code>dependencies.gradle</code>文件内容如下（可以依据自己的项目自定义）</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">ext &#123;</div><div class="line">   <span class="comment">// version</span></div><div class="line">   supportLibrary = <span class="string">'25.2.0'</span></div><div class="line"></div><div class="line">   <span class="comment">// multiDex</span></div><div class="line">   multiDex = <span class="string">'1.0.1'</span></div><div class="line"></div><div class="line">   compileSdk = <span class="number">25</span></div><div class="line">   buildTools = <span class="string">'25.0.2'</span></div><div class="line"></div><div class="line">   supportDependencies = [</div><div class="line">           <span class="string">appCompat        :</span> <span class="string">"com.android.support:appcompat-v7:$&#123;supportLibrary&#125;"</span>,</div><div class="line">           <span class="string">appSupportV4     :</span> <span class="string">"com.android.support:support-v4:$&#123;supportLibrary&#125;"</span>,</div><div class="line">           <span class="string">recyclerView     :</span> <span class="string">"com.android.support:recyclerview-v7:$&#123;supportLibrary&#125;"</span>,</div><div class="line">           <span class="string">cardView         :</span> <span class="string">"com.android.support:cardview-v7:$&#123;supportLibrary&#125;"</span>,</div><div class="line"><span class="symbol">           supportAnnotation:</span> <span class="string">"com.android.support:support-annotations:$&#123;supportLibrary&#125;"</span>,</div><div class="line">           <span class="string">appCompatV4      :</span> <span class="string">"com.android.support:support-compat:$&#123;supportLibrary&#125;"</span>,</div><div class="line">           <span class="string">v4CoreUtils      :</span> <span class="string">"com.android.support:support-core-utils:$&#123;supportLibrary&#125;"</span>,</div><div class="line">           <span class="string">v4CoreUi         :</span> <span class="string">"com.android.support:support-core-ui:$&#123;supportLibrary&#125;"</span>,</div><div class="line">           <span class="string">v4Fragment       :</span> <span class="string">"com.android.support:support-fragment:$&#123;supportLibrary&#125;"</span>,</div><div class="line">           <span class="string">multiDex         :</span> <span class="string">"com.android.support:multidex:$&#123;multiDex&#125;"</span>,</div><div class="line">           <span class="string">design           :</span> <span class="string">"com.android.support:design:$&#123;supportLibrary&#125;"</span></div><div class="line">   ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>！注意：<code>&quot;com.android.support:xxx&quot;</code>用的是双引号</strong></p>
+</li>
 </ul>
-<figure class="highlight gauss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">push</span> origin :[远程分支名] <span class="comment">// 省略本地分支名相当于推送了个空的分支到远程所以是删除</span></div><div class="line"><span class="comment">// 等同于</span></div><div class="line">git <span class="keyword">push</span> origin --<span class="keyword">delete</span> [远程分支名]</div></pre></td></tr></table></figure>
 <ul>
-<li>如果当前分支与多个主机存在追踪关系，则可以使用-u选项指定一个默认主机，这样后面就可以不加任何参数使用<code>git push</code></li>
+<li>
+<p>配置根目录的<code>build.gradle</code>文件</p>
+<p>文件内容如下</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">allprojects &#123;</div><div class="line">    repositories &#123;</div><div class="line">       jcenter()</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">apply <span class="string">from:</span> <span class="string">'gradleScript/dependencies.gradle'</span></div></pre></td></tr></table></figure>
+</li>
+<li>
+<p>配置 module 下的<code>build.gradle</code>文件</p>
+<p>内容如下</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line"></div><div class="line">   	compileSdkVersion compileSdk</div><div class="line">   	buildToolsVersion buildTools</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">dependencies &#123;</div><div class="line">  compile supportDependencies.appCompat</div><div class="line">  compile supportDependencies.recyclerView</div><div class="line">  compile supportDependencies.cardView</div><div class="line">  compile supportDependencies.appSupportV4</div><div class="line">  compile supportDependencies.multiDex</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>完成上面的配置就可以直接使用了，以后只要改<code>dependencies.gradle</code>里面的版本号就可以改变整个项目的依赖版本号</strong></p>
+</li>
 </ul>
-<figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">push</span> -u <span class="built_in">origin</span> master</div></pre></td></tr></table></figure>
-<h2 id="git-pull"><a class="header-anchor" href="#git-pull">¶</a><code>git pull</code></h2>
-<ul>
-<li><code>git pull</code>命令的作用是，取回远程主机某个分支的更新，再与本地的指定分支合并。</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git pull <span class="tag">&lt;<span class="name">远程主机名</span>&gt;</span> <span class="tag">&lt;<span class="name">远程分支名</span>&gt;</span>:<span class="tag">&lt;<span class="name">本地分支名</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>比如，取回origin主机的next分支，与本地的master分支合并，需要写成下面这样。</p>
-<figure class="highlight autoit"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git pull origin <span class="keyword">next</span>:master</div></pre></td></tr></table></figure>
-<p>如果是合并到当前分支则可以省略冒号后面。</p>
-<figure class="highlight autoit"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git pull origin <span class="keyword">next</span></div></pre></td></tr></table></figure>
-<p>如果当前分支和远程分支存在追踪关系则可以：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git pull origin</div></pre></td></tr></table></figure>
-<p>如果当前分支只有一个追踪分支则可以：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git pull</div></pre></td></tr></table></figure>
-<p>当远程删除了分支需要自动删除本地分支的时候则可以：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git pull -p</div></pre></td></tr></table></figure>
-<h2 id="分支"><a class="header-anchor" href="#分支">¶</a>分支</h2>
-<ul>
-<li>创建分支<code>git branch [branch name]</code></li>
-<li>删除分支<code>git branch -d [branch name]</code></li>
-<li>创建并切换分支<code>git checkout -b [branch name] [current branch]</code></li>
-<li>切换分支<code>git checkout [branch name]</code></li>
-<li>手动追踪分支<code>git branch --set-upstream [本地分支] [origin/远程分支]</code></li>
-</ul>
-<h2 id="tag"><a class="header-anchor" href="#tag">¶</a>tag</h2>
-<ul>
-<li>新建tag<code>git tag -a [tag name]</code></li>
-<li>拉取tag<code>git pull origin --tags</code></li>
-<li>推送tag<code>git push --tags</code></li>
-<li>删除tag<code>git tag -d [name]</code></li>
-<li>删除远程tag<code>git push --delete origin tagname</code></li>
-</ul>
+<h1>管理签名文件</h1>
+<p>Android 打正式包时需要签名文件，但是签名文件是私密的一般不会用版本控制工具来管理，所以就需要一个单独的文件来存放签名相关的信息，我使用的是官方培训课程中的方案。</p>
+<ol>
+<li>在项目的根目录下创建一个名称为 keystore.properties 的文件。此文件应当包含你的签名文件信息，如下：</li>
+</ol>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="attr">storePassword</span>=myStorePassword</div><div class="line"><span class="attr">keyPassword</span>=mykeyPassword</div><div class="line"><span class="attr">keyAlias</span>=myKeyAlias</div><div class="line"><span class="attr">storeFile</span>=myStoreFileLocation</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>在 app module 的 build.gradle 文件中，于 android {} 块的前面添加用于加载 keystore.properties 文件的代码，如下：</li>
+</ol>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">// 初始化根目录下的 keystore.properties 文件</div><div class="line">def keystorePropertiesFile = rootProject.file(<span class="string">"keystore.properties"</span>)</div><div class="line"></div><div class="line">// 声明 keystoreProperties 变量</div><div class="line">def keystoreProperties = new <span class="type">Properties</span>()</div><div class="line"></div><div class="line">// 把 keystore.properties 文件加载到 keystoreProperties 变量中</div><div class="line">keystoreProperties.load(new <span class="type">FileInputStream</span>(keystorePropertiesFile))</div><div class="line"></div><div class="line">android <span class="meta">&#123;...&#125;</span></div></pre></td></tr></table></figure>
+<ol start="3">
+<li>使用</li>
+</ol>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">  signingConfigs &#123;</div><div class="line">    config &#123;</div><div class="line">       keyAlias keystoreProperties[<span class="string">'keyAlias'</span>]</div><div class="line">       keyPassword keystoreProperties[<span class="string">'keyPassword'</span>]</div><div class="line">       storeFile file(keystoreProperties[<span class="string">'storeFile'</span>])</div><div class="line">       storePassword keystoreProperties[<span class="string">'storePassword'</span>]</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>参考<br>
+<a href="https://gist.github.com/gabrielemariotti/ad6672902464ee2392d0" target="_blank" rel="external">How to manage the support libraries in a multi-module projects</a><br>
+<a href="https://developer.android.com/studio/publish/app-signing.html#secure-key" target="_blank" rel="external">Secure your private key</a></p>
+</blockquote>
 
       
     </div>
@@ -483,7 +463,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/git/" rel="tag"># git</a>
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+            <a href="/tags/Gradle/" rel="tag"># Gradle</a>
           
         </div>
       
@@ -496,8 +478,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/23/Android-runtime-permissions/" rel="next" title="Android 运行时权限">
-                <i class="fa fa-chevron-left"></i> Android 运行时权限
+              <a href="/2017/02/27/android-obfuscated-notes/" rel="next" title="Android 混淆笔记">
+                <i class="fa fa-chevron-left"></i> Android 混淆笔记
               </a>
             
           </div>
@@ -505,10 +487,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/01/23/Android-Activity-and-Fragment-animation/" rel="prev" title="Activity 和 Fragment 跳转动画">
-                Activity 和 Fragment 跳转动画 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -669,7 +647,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#git-push"><span class="nav-number">1.</span> <span class="nav-text">¶git push</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-pull"><span class="nav-number">2.</span> <span class="nav-text">¶git pull</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分支"><span class="nav-number">3.</span> <span class="nav-text">¶分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tag"><span class="nav-number">4.</span> <span class="nav-text">¶tag</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">配置支持库和编译相关的版本号</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">管理签名文件</span></a></li></ol></div>
             
 
           </div>
@@ -800,9 +778,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'yohanli';
-      var disqus_identifier = '2017/01/23/git-useful-cmd/';
+      var disqus_identifier = '2017/03/03/android-manage-gradle-file/';
 
-      var disqus_title = "git 常用命令";
+      var disqus_title = "管理 Android 项目里的 build.gradle";
 
 
       function run_disqus_script(disqus_script) {
