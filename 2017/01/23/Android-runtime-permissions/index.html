@@ -101,11 +101,15 @@
 <meta property="og:site_name" content="Yohan's chat">
 <meta property="og:description" content="在Android6.0（API-23）以上且 targetSdkVersion 是23时申请危险权限需要动态申请。
 如果设备运行的是 Android 5.1（API 级别 22）或更低版本，并且应用的 targetSdkVersion 是 22 或更低版本则不需要申请权限。">
-<meta property="og:updated_time" content="2017-01-23T07:53:28.000Z">
+<meta property="og:image" content="http://yohan.li/images/runtime-permissions/first_request.png">
+<meta property="og:image" content="http://yohan.li/images/runtime-permissions/second_request.png">
+<meta property="og:image" content="http://yohan.li/images/runtime-permissions/third_request.png">
+<meta property="og:updated_time" content="2017-03-03T03:13:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android 运行时权限">
 <meta name="twitter:description" content="在Android6.0（API-23）以上且 targetSdkVersion 是23时申请危险权限需要动态申请。
 如果设备运行的是 Android 5.1（API 级别 22）或更低版本，并且应用的 targetSdkVersion 是 22 或更低版本则不需要申请权限。">
+<meta name="twitter:image" content="http://yohan.li/images/runtime-permissions/first_request.png">
 
 
 
@@ -522,21 +526,26 @@
 </tr>
 <tr>
 <td><code>shouldShowRequestPermissionRationale()</code></td>
-<td>是否要提示用户申请该权限的缘由</td>
-</tr>
-<tr>
-<td><code>shouldShowRequestPermissionRationale</code></td>
-<td>方法只有当用户第一次拒绝之后再请求时会返回<code>true</code> 如果用户勾选不再询问之后会返回<code>false</code></td>
+<td>是否要提示用户申请该权限的缘由，该方法只有当用户第一次拒绝之后再请求时会返回<code>true</code> 如果用户勾选不再询问之后会返回<code>false</code></td>
 </tr>
 </tbody>
 </table>
-<h3 id="如下事例"><a class="header-anchor" href="#如下事例">¶</a>如下事例</h3>
+<h2 id="运行时权限实践"><a class="header-anchor" href="#运行时权限实践">¶</a>运行时权限实践</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (ContextCompat.checkSelfPermission(<span class="keyword">this</span>, Manifest.permission.READ_PHONE_STATE) !=</div><div class="line">                        PackageManager.PERMISSION_GRANTED) &#123;</div><div class="line">      <span class="keyword">if</span> (ActivityCompat.shouldShowRequestPermissionRationale(<span class="keyword">this</span>, Manifest</div><div class="line">              .permission.READ_PHONE_STATE)) &#123;</div><div class="line">          <span class="comment">// 用户首次拒绝权限第二次请求的时候会执行这段代码，可以在这段代码里弹出对话框解释申请权限的原因并且引导用户再次申请权限</span></div><div class="line">          Toast.makeText(<span class="keyword">this</span>, <span class="string">"show reason"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">      &#125; <span class="keyword">else</span> &#123;</div><div class="line">    		<span class="comment">// 第一次直接申请权限</span></div><div class="line">          ActivityCompat.requestPermissions(<span class="keyword">this</span>, <span class="keyword">new</span> String[]&#123;Manifest.permission</div><div class="line">                  .READ_PHONE_STATE&#125;, REQ_CODE);</div><div class="line">      &#125;</div><div class="line"> &#125;</div><div class="line"> </div><div class="line"> <span class="meta">@Override</span></div><div class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRequestPermissionsResult</span><span class="params">(<span class="keyword">int</span> requestCode, @NonNull String[] permissions,</span></span></div><div class="line">                                        @NonNull <span class="keyword">int</span>[] grantResults) &#123;</div><div class="line">     <span class="keyword">super</span>.onRequestPermissionsResult(requestCode, permissions, grantResults);</div><div class="line">     <span class="keyword">if</span> (requestCode == REQ_CODE) &#123;</div><div class="line">         <span class="keyword">if</span> (grantResults.length &gt; <span class="number">0</span> &amp;&amp; grantResults[<span class="number">0</span>] == PackageManager.PERMISSION_GRANTED) &#123;</div><div class="line">             <span class="comment">// 权限获取成功</span></div><div class="line">             Toast.makeText(<span class="keyword">this</span>, <span class="string">"权限获取成功"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">         &#125; <span class="keyword">else</span> &#123;</div><div class="line">             <span class="comment">// 权限获取失败</span></div><div class="line">             Toast.makeText(<span class="keyword">this</span>, <span class="string">"权限获取失败"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">         &#125;</div><div class="line">     &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<h3 id="图例"><a class="header-anchor" href="#图例">¶</a>图例</h3>
+<h4 id="第一次请求流程"><a class="header-anchor" href="#第一次请求流程">¶</a>第一次请求流程</h4>
+<p><img src="/images/runtime-permissions/first_request.png" alt="第一次请求"></p>
+<h4 id="第二次请求流程"><a class="header-anchor" href="#第二次请求流程">¶</a>第二次请求流程</h4>
+<p><img src="/images/runtime-permissions/second_request.png" alt="第二次请求"></p>
+<h4 id="第三次请求流程"><a class="header-anchor" href="#第三次请求流程">¶</a>第三次请求流程</h4>
+<p><img src="/images/runtime-permissions/third_request.png" alt="第三次请求"></p>
+<h3 id="流程表"><a class="header-anchor" href="#流程表">¶</a>流程表</h3>
 <table>
 <thead>
 <tr>
 <th>序号</th>
 <th>用户是否授予权限</th>
-<th><code>shouldShowRationale()</code> 返回</th>
+<th><code>shouldShowRequestPermissionRationale()</code> 返回</th>
 <th>是否勾选“不再询问”</th>
 </tr>
 </thead>
@@ -573,6 +582,7 @@
 </tr>
 </tbody>
 </table>
+<h2 id="easypermisions"><a class="header-anchor" href="#easypermisions">¶</a>EasyPermisions</h2>
 <blockquote>
 <p>运行时权限结合EasyPermisions使用。<br>
 EasyPermisions是谷歌开源的运行时权限封装库，使用时在BaseActivity和BaseFragment中加上就可以轻松使用运行时权限。</p>
@@ -800,7 +810,7 @@ EasyPermisions是谷歌开源的运行时权限封装库，使用时在BaseActiv
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#危险权限包括"><span class="nav-number">1.</span> <span class="nav-text">¶危险权限包括</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#普通权限-只要app在清单中列出就会自动授权"><span class="nav-number">2.</span> <span class="nav-text">¶普通权限（只要App在清单中列出就会自动授权）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行时权限的几个基本方法"><span class="nav-number">3.</span> <span class="nav-text">¶运行时权限的几个基本方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#如下事例"><span class="nav-number">3.1.</span> <span class="nav-text">¶如下事例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用例子"><span class="nav-number">4.</span> <span class="nav-text">¶使用例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">¶参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#危险权限包括"><span class="nav-number">1.</span> <span class="nav-text">¶危险权限包括</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#普通权限-只要app在清单中列出就会自动授权"><span class="nav-number">2.</span> <span class="nav-text">¶普通权限（只要App在清单中列出就会自动授权）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行时权限的几个基本方法"><span class="nav-number">3.</span> <span class="nav-text">¶运行时权限的几个基本方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行时权限实践"><span class="nav-number">4.</span> <span class="nav-text">¶运行时权限实践</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#图例"><span class="nav-number">4.1.</span> <span class="nav-text">¶图例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一次请求流程"><span class="nav-number">4.1.1.</span> <span class="nav-text">¶第一次请求流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二次请求流程"><span class="nav-number">4.1.2.</span> <span class="nav-text">¶第二次请求流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三次请求流程"><span class="nav-number">4.1.3.</span> <span class="nav-text">¶第三次请求流程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#流程表"><span class="nav-number">4.2.</span> <span class="nav-text">¶流程表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#easypermisions"><span class="nav-number">5.</span> <span class="nav-text">¶EasyPermisions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用例子"><span class="nav-number">6.</span> <span class="nav-text">¶使用例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">7.</span> <span class="nav-text">¶参考</span></a></li></ol></div>
             
 
           </div>
