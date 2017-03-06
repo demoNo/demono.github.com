@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+
+    
+  <url>
+    <loc>http://yohan.li/2017/02/27/android-obfuscated-notes/</loc>
+    <lastmod>2017-03-06T06:42:47.000Z</lastmod>
+    <data>
+        <display>
+        <title>Android 混淆笔记</title>
+        <pubTime>2017-02-27T07:32:20.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>混淆</tag>
+         
+        <tag>安全</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yohan.li/2017/03/03/android-manage-gradle-file/</loc>
+    <lastmod>2017-03-03T10:18:18.000Z</lastmod>
+    <data>
+        <display>
+        <title>管理 Android 项目里的 build.gradle</title>
+        <pubTime>2017-03-03T07:29:20.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>Gradle</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yohan.li/2017/01/23/Android-runtime-permissions/</loc>
+    <lastmod>2017-03-03T03:13:44.000Z</lastmod>
+    <data>
+        <display>
+        <title>Android 运行时权限</title>
+        <pubTime>2017-01-23T07:38:28.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>Android 6.0</tag>
+         
+        <tag>runtime permissions</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://yohan.li/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yohan.li/2017/02/27/osx-useful-command/</loc>
+    <lastmod>2017-02-28T07:53:58.000Z</lastmod>
+    <data>
+        <display>
+        <title>Mac 切换 bash 到 z shell</title>
+        <pubTime>2017-02-27T07:31:26.000Z</pubTime>
+        
+        <tag>zsh</tag>
+         
+        <tag>osx</tag>
+         
+        <tag>bash</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yohan.li/2017/02/22/zsh-and-iterm2-configuration/</loc>
+    <lastmod>2017-02-28T07:53:14.000Z</lastmod>
+    <data>
+        <display>
+        <title>zsh 配置和 iTerm2 常用功能</title>
+        <pubTime>2017-02-22T07:33:41.000Z</pubTime>
+        
+        <tag>zsh</tag>
+         
+        <tag>iTerm2</tag>
+         
+        <tag>oh-my-zsh</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yohan.li/2014/03/04/android-activity-task/</loc>
+    <lastmod>2017-01-24T03:27:30.000Z</lastmod>
+    <data>
+        <display>
+        <title>（转）Android activity task相关</title>
+        <pubTime>2014-03-04T09:31:06.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>Activity</tag>
+         
+        <tag>LanchMode</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://yohan.li/categories/Android/"/>
+          
+             
+              <breadCrumb title="Java" url="http://yohan.li/categories/Android/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yohan.li/2014/03/04/activity-singleInstance/</loc>
+    <lastmod>2017-01-24T03:05:20.000Z</lastmod>
+    <data>
+        <display>
+        <title>Activity启动模式之SingleInstance</title>
+        <pubTime>2014-03-04T09:46:35.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>SingleInstance</tag>
+         
+        <tag>LaunchMode</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://yohan.li/categories/Android/"/>
+          
+             
+              <breadCrumb title="Java" url="http://yohan.li/categories/Android/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yohan.li/2017/01/23/Android-Activity-and-Fragment-animation/</loc>
+    <lastmod>2017-01-23T09:12:01.000Z</lastmod>
+    <data>
+        <display>
+        <title>Activity 和 Fragment 跳转动画</title>
+        <pubTime>2017-01-23T07:45:40.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>Fragment</tag>
+         
+        <tag>animation</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://yohan.li/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yohan.li/2017/01/23/Android-Fragment-useful-notes/</loc>
+    <lastmod>2017-01-23T07:55:11.000Z</lastmod>
+    <data>
+        <display>
+        <title>Fragment 知识点</title>
+        <pubTime>2017-01-23T07:47:19.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>Fragment</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://yohan.li/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yohan.li/2017/01/23/git-useful-cmd/</loc>
+    <lastmod>2017-01-23T07:53:26.000Z</lastmod>
+    <data>
+        <display>
+        <title>git 常用命令</title>
+        <pubTime>2017-01-23T07:45:10.000Z</pubTime>
+        
+        <tag>git</tag>
+         
+         
+           
+             
+              <breadCrumb title="git" url="http://yohan.li/categories/git/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yohan.li/2014/05/22/activity-singletask-and-singleinstance/</loc>
+    <lastmod>2017-01-23T07:28:14.000Z</lastmod>
+    <data>
+        <display>
+        <title>Activity启动模式之SingleTask和SingleInstance</title>
+        <pubTime>2014-05-22T09:40:44.000Z</pubTime>
+        
+        <tag>Activity</tag>
+         
+        <tag>LanunchMode</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://yohan.li/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+  <url>
+    <loc>http://yohan.li/2014/03/04/ndk-donwload-and-install/</loc>
+    <lastmod>2017-01-22T10:17:01.000Z</lastmod>
+    <data>
+        <display>
+        <title>NDK的下载和安装</title>
+        <pubTime>2014-03-04T09:49:00.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>NDK</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://yohan.li/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yohan.li/2014/03/04/java-bubblesort/</loc>
+    <lastmod>2017-01-22T10:15:05.000Z</lastmod>
+    <data>
+        <display>
+        <title>Java冒泡排序</title>
+        <pubTime>2014-03-04T09:49:47.000Z</pubTime>
+        
+        <tag>BubbleSort</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java" url="http://yohan.li/categories/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yohan.li/2014/03/10/android-support-different-screen/</loc>
+    <lastmod>2017-01-22T10:13:57.000Z</lastmod>
+    <data>
+        <display>
+        <title>Android适配不同分辨率（译）</title>
+        <pubTime>2014-03-10T09:46:53.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>density</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://yohan.li/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yohan.li/2014/05/19/android-activity-lifecycle-transform/</loc>
+    <lastmod>2017-01-22T10:13:27.000Z</lastmod>
+    <data>
+        <display>
+        <title>Android Activity生命周期的转换</title>
+        <pubTime>2014-05-19T07:45:46.000Z</pubTime>
+        
+        <tag>Activity</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://yohan.li/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yohan.li/2014/03/04/activity-singletask/</loc>
+    <lastmod>2017-01-22T10:12:09.000Z</lastmod>
+    <data>
+        <display>
+        <title>Activity启动模式之SingleTask</title>
+        <pubTime>2014-03-04T09:48:10.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>SingleTask</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://yohan.li/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+</urlset>
