@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="Yohan's chat">
 <meta property="og:description" content="背景
 现如今 Android 项目都是用 build.grale 来配置的，项目中一般包含多个 module，这样就会同时存在多个 build.gradle 文件，这时候如果要升级整个项目的 api 版本就需要手动改，会很麻烦，特别是module特别多的时候。下面就是解决这个问题的一些方法。">
-<meta property="og:updated_time" content="2017-03-03T10:18:18.000Z">
+<meta property="og:updated_time" content="2017-03-08T06:38:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="管理 Android 项目里的 build.gradle">
 <meta name="twitter:description" content="背景
@@ -215,6 +215,16 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
           </a>
         </li>
       
@@ -344,6 +354,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -390,13 +422,13 @@
       
 
       
-        <h1>背景</h1>
+        <h1 id="背景">背景</h1>
 <p>现如今 Android 项目都是用 build.grale 来配置的，项目中一般包含多个 module，这样就会同时存在多个 build.gradle 文件，这时候如果要升级整个项目的 api 版本就需要手动改，会很麻烦，特别是module特别多的时候。下面就是解决这个问题的一些方法。</p>
 <a id="more"></a>
 <blockquote>
 <p>当然每个 module 可以有自己的支持库的版本和 compileSdk 等等版本号，这篇文章只是针对想统一整个项目构建工具、编译sdk、支持库版本号对应的一些方法。</p>
 </blockquote>
-<h1>配置支持库和编译相关的版本号</h1>
+<h1 id="配置支持库和编译相关的版本号">配置支持库和编译相关的版本号</h1>
 <p>在我的项目中经常会在 app module 和其他 module 中存在很多支持库，比如<code>com.android.support:appcompat-v7</code> <code>com.android.support:support-v4</code>包等支持库，而他们的版本号经常会更新，一般新的版本会修复一些 bug 并带来一些新的特性和提升性能，所以建议更新到最新版。</p>
 <ul>
 <li>
@@ -421,7 +453,7 @@
 <p><strong>完成上面的配置就可以直接使用了，以后只要改<code>dependencies.gradle</code>里面的版本号就可以改变整个项目的依赖版本号</strong></p>
 </li>
 </ul>
-<h1>管理签名文件</h1>
+<h1 id="管理签名文件">管理签名文件</h1>
 <p>Android 打正式包时需要签名文件，但是签名文件是私密的一般不会用版本控制工具来管理，所以就需要一个单独的文件来存放签名相关的信息，我使用的是官方培训课程中的方案。</p>
 <ol>
 <li>在项目的根目录下创建一个名称为 keystore.properties 的文件。此文件应当包含你的签名文件信息，如下：</li>
@@ -573,10 +605,10 @@
 
           
             <div class="site-state-item site-state-categories">
-              
-                <span class="site-state-item-count">4</span>
+              <a href="/categories">
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
-              
+              </a>
             </div>
           
 
@@ -647,7 +679,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">配置支持库和编译相关的版本号</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">管理签名文件</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置支持库和编译相关的版本号"><span class="nav-number">2.</span> <span class="nav-text">配置支持库和编译相关的版本号</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#管理签名文件"><span class="nav-number">3.</span> <span class="nav-text">管理签名文件</span></a></li></ol></div>
             
 
           </div>

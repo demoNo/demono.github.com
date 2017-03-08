@@ -106,7 +106,7 @@
 <meta property="og:image" content="http://media.tumblr.com/4c3030d014e19e66e59ce0721772b56f/tumblr_inline_mnya77Ypps1qz4rgp.jpg">
 <meta property="og:image" content="http://media.tumblr.com/1723b7c246c71536251cc20edb595e08/tumblr_inline_mnya8jdgV51qz4rgp.png">
 <meta property="og:image" content="http://media.tumblr.com/bf23fe1912893bd813702a29d0978ad0/tumblr_inline_mnytj05S3n1qz4rgp.png">
-<meta property="og:updated_time" content="2017-01-22T10:17:01.000Z">
+<meta property="og:updated_time" content="2017-03-08T04:13:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NDK的下载和安装">
 <meta name="twitter:description" content="NDK的下载和安装
@@ -222,6 +222,16 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
           </a>
         </li>
       
@@ -363,8 +373,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
+                  <a href="/categories/Android-NDK/" itemprop="url" rel="index">
+                    <span itemprop="name">Android NDK</span>
                   </a>
                 </span>
 
@@ -419,18 +429,18 @@
       
 
       
-        <h1>NDK的下载和安装</h1>
+        <h1 id="ndk的下载和安装">NDK的下载和安装</h1>
 <blockquote>
 <p>注意：这里只是针对ndk版本为 &quot;Android NDK, Revision 8e&quot;的介绍，操作系统为Windows。</p>
 </blockquote>
 <a id="more"></a>
-<h2 id="下载"><a class="header-anchor" href="#下载">¶</a>下载</h2>
+<h2 id="下载">下载</h2>
 <p>首先去官网<a href="http://developer.android.com/tools/sdk/ndk/index.html" target="_blank" rel="external">android ndk</a>下载Android ndk。如下图选择合适的包。</p>
 <p><img src="http://media.tumblr.com/4c3030d014e19e66e59ce0721772b56f/tumblr_inline_mnya77Ypps1qz4rgp.jpg" alt=""></p>
 <p>这里选择Windows版的。下载完之后解压缩到C盘，当然也可以解压到其他目录。<br>
 接下来需要安装cygwin。下载<a href="http://www.cygwin.com/setup.exe" target="_blank" rel="external">cygwin</a>，版本必须是1.7以上。在cygwin选择所需要安装的包时如下图选择。</p>
 <p><img src="http://media.tumblr.com/1723b7c246c71536251cc20edb595e08/tumblr_inline_mnya8jdgV51qz4rgp.png" alt=""></p>
-<h2 id="安装"><a class="header-anchor" href="#安装">¶</a>安装</h2>
+<h2 id="安装">安装</h2>
 <p>接下来一直下一步直到完成安装。</p>
 <blockquote>
 <p>！注意接下来这步不是必须的。</p>
@@ -438,7 +448,7 @@
 <p>为了使用方便我们需要简单的配置一下cwygin。在cygwin的根目录下找到home文件夹并在里面找到以自己登录名命名的文件夹，进去之后找到**.bash_profile**(如果不存在的话新建一个)文件，用文本编辑器打开然后填入以下内容</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ANDROID_NDK_ROOT=/cygdrive/c/android-ndk-r8e</div><div class="line"><span class="built_in">export</span> ANDROID_NDK_ROOT</div></pre></td></tr></table></figure>
 <p>这里的**<code>c/android-ndk-r8e</code><strong>是指自己的ndk安装路径，我这里是C盘，所以这样写，前面的</strong><code>/cygdrive/</code>**是cygwin访问本地磁盘目录必带前缀，我们可以把它看成是Windows的根目录。</p>
-<h2 id="构建"><a class="header-anchor" href="#构建">¶</a>构建</h2>
+<h2 id="构建">构建</h2>
 <p>这样每次使用cygwin进行build的时候就方便一点了。如下在cygwin中输入</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> [你的工程所在路径] 例如 <span class="built_in">cd</span> /cygdrive/d/workspace/Ndk_example</div><div class="line"><span class="variable">$ANDROID_NDK_ROOT</span>/ndk-build</div></pre></td></tr></table></figure>
 <p>执行完上面的命令之后刷新工程就能看见新生成的<code>.so</code>文件，就是编译好的库文件。<br>
@@ -593,10 +603,10 @@
 
           
             <div class="site-state-item site-state-categories">
-              
-                <span class="site-state-item-count">4</span>
+              <a href="/categories">
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
-              
+              </a>
             </div>
           
 
@@ -667,7 +677,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">NDK的下载和安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载"><span class="nav-number">1.1.</span> <span class="nav-text">¶下载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.2.</span> <span class="nav-text">¶安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构建"><span class="nav-number">1.3.</span> <span class="nav-text">¶构建</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ndk的下载和安装"><span class="nav-number">1.</span> <span class="nav-text">NDK的下载和安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载"><span class="nav-number">1.1.</span> <span class="nav-text">下载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构建"><span class="nav-number">1.3.</span> <span class="nav-text">构建</span></a></li></ol></li></ol></div>
             
 
           </div>

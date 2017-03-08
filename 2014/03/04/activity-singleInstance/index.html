@@ -106,7 +106,7 @@
 <meta property="og:image" content="http://media.tumblr.com/495bccdd22412948e6ff67737548d654/tumblr_inline_mol1hqDPRl1qz4rgp.png">
 <meta property="og:image" content="http://media.tumblr.com/37c0ebf199defc5f2922b0389040402e/tumblr_inline_mol1jd3Hsm1qz4rgp.png">
 <meta property="og:image" content="http://media.tumblr.com/a28489e78bde9edcc47bd0bd45124955/tumblr_inline_mol1m35Zag1qz4rgp.png">
-<meta property="og:updated_time" content="2017-01-24T03:05:20.000Z">
+<meta property="og:updated_time" content="2017-03-08T04:11:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Activity启动模式之SingleInstance">
 <meta name="twitter:description" content="Activity启动模式之 singleInstance
@@ -222,6 +222,16 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
           </a>
         </li>
       
@@ -370,17 +380,6 @@
 
                 
                 
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
               
             </span>
           
@@ -435,7 +434,7 @@
 </blockquote>
 <p>接上篇文章，这篇主要是了解<code>singleInstance</code>启动模式。由于已经有人整理的非常好，并且讲的很通俗和详细，所以就不再重复造轮子了。这篇文章直接引用csdn的<a href="http://blog.csdn.net/liuhe688/article/details/6754323" target="_blank" rel="external">scottliu</a>的文章。</p>
 <a id="more"></a>
-<h1>singleInstance</h1>
+<h1 id="singleinstance">singleInstance</h1>
 <p>这种启动模式比较特殊，因为它会启用一个新的栈结构，将<code>Acitvity</code>放置于这个新的栈结构中，并保证不再有其他<code>Activity</code>实例进入。<br>
 我们修改<code>FirstActivity</code>的<code>launchMode=&quot;standard&quot;</code>，<code>SecondActivity</code>的<code>launchMode=&quot;singleInstance&quot;</code>，由于涉及到了多个栈结构，我们需要在每个<code>Activity</code>中显示当前栈结构的<code>id</code>，所以我们为每个<code>Activity</code>添加如下代码：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">TextView taskIdView = (TextView) findViewById(R.id.taskIdView);</div><div class="line">taskIdView.setText(<span class="string">"current task id: "</span> + <span class="keyword">this</span>.getTaskId());</div></pre></td></tr></table></figure>
@@ -589,10 +588,10 @@
 
           
             <div class="site-state-item site-state-categories">
-              
-                <span class="site-state-item-count">4</span>
+              <a href="/categories">
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
-              
+              </a>
             </div>
           
 
@@ -663,7 +662,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">singleInstance</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#singleinstance"><span class="nav-number">1.</span> <span class="nav-text">singleInstance</span></a></li></ol></div>
             
 
           </div>

@@ -216,6 +216,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
@@ -414,7 +424,7 @@
 <ul>
 <li>创建远程仓库<code>git remote add [remote name] [url]</code></li>
 </ul>
-<h2 id="git-push"><a class="header-anchor" href="#git-push">¶</a><code>git push</code></h2>
+<h2 id="git-push"><code>git push</code></h2>
 <ul>
 <li>推送到远程<code>git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;</code></li>
 </ul>
@@ -429,7 +439,7 @@
 <li>如果当前分支与多个主机存在追踪关系，则可以使用-u选项指定一个默认主机，这样后面就可以不加任何参数使用<code>git push</code></li>
 </ul>
 <figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">push</span> -u <span class="built_in">origin</span> master</div></pre></td></tr></table></figure>
-<h2 id="git-pull"><a class="header-anchor" href="#git-pull">¶</a><code>git pull</code></h2>
+<h2 id="git-pull"><code>git pull</code></h2>
 <ul>
 <li><code>git pull</code>命令的作用是，取回远程主机某个分支的更新，再与本地的指定分支合并。</li>
 </ul>
@@ -444,7 +454,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git pull</div></pre></td></tr></table></figure>
 <p>当远程删除了分支需要自动删除本地分支的时候则可以：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git pull -p</div></pre></td></tr></table></figure>
-<h2 id="分支"><a class="header-anchor" href="#分支">¶</a>分支</h2>
+<h2 id="分支">分支</h2>
 <ul>
 <li>创建分支<code>git branch [branch name]</code></li>
 <li>删除分支<code>git branch -d [branch name]</code></li>
@@ -452,7 +462,7 @@
 <li>切换分支<code>git checkout [branch name]</code></li>
 <li>手动追踪分支<code>git branch --set-upstream [本地分支] [origin/远程分支]</code></li>
 </ul>
-<h2 id="tag"><a class="header-anchor" href="#tag">¶</a>tag</h2>
+<h2 id="tag">tag</h2>
 <ul>
 <li>新建tag<code>git tag -a [tag name]</code></li>
 <li>拉取tag<code>git pull origin --tags</code></li>
@@ -595,10 +605,10 @@
 
           
             <div class="site-state-item site-state-categories">
-              
-                <span class="site-state-item-count">4</span>
+              <a href="/categories">
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
-              
+              </a>
             </div>
           
 
@@ -669,7 +679,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#git-push"><span class="nav-number">1.</span> <span class="nav-text">¶git push</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-pull"><span class="nav-number">2.</span> <span class="nav-text">¶git pull</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分支"><span class="nav-number">3.</span> <span class="nav-text">¶分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tag"><span class="nav-number">4.</span> <span class="nav-text">¶tag</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#git-push"><span class="nav-number">1.</span> <span class="nav-text">git push</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-pull"><span class="nav-number">2.</span> <span class="nav-text">git pull</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分支"><span class="nav-number">3.</span> <span class="nav-text">分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tag"><span class="nav-number">4.</span> <span class="nav-text">tag</span></a></li></ol></div>
             
 
           </div>

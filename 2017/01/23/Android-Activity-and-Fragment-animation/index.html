@@ -93,18 +93,18 @@
 
 
 
-<meta name="description" content="¶Activity 转场动画
+<meta name="description" content="Activity 转场动画
 Activity转场动画是是通过overridePendingTransition(int enterAnim, int exitAnim)实现的。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Activity 和 Fragment 跳转动画">
 <meta property="og:url" content="http://yohan.li/2017/01/23/Android-Activity-and-Fragment-animation/index.html">
 <meta property="og:site_name" content="Yohan's chat">
-<meta property="og:description" content="¶Activity 转场动画
+<meta property="og:description" content="Activity 转场动画
 Activity转场动画是是通过overridePendingTransition(int enterAnim, int exitAnim)实现的。">
 <meta property="og:updated_time" content="2017-01-23T09:12:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Activity 和 Fragment 跳转动画">
-<meta name="twitter:description" content="¶Activity 转场动画
+<meta name="twitter:description" content="Activity 转场动画
 Activity转场动画是是通过overridePendingTransition(int enterAnim, int exitAnim)实现的。">
 
 
@@ -215,6 +215,16 @@ Activity转场动画是是通过overridePendingTransition(int enterAnim, int exi
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
           </a>
         </li>
       
@@ -412,7 +422,7 @@ Activity转场动画是是通过overridePendingTransition(int enterAnim, int exi
       
 
       
-        <h2 id="activity-转场动画"><a class="header-anchor" href="#activity-转场动画">¶</a>Activity 转场动画</h2>
+        <h2 id="activity-转场动画">Activity 转场动画</h2>
 <p>Activity转场动画是是通过override<code>PendingTransition(int enterAnim, int exitAnim)</code>实现的。</p>
 <a id="more"></a>
 <p>这个方法是API Level 5 加入的。</p>
@@ -421,7 +431,7 @@ Activity转场动画是是通过overridePendingTransition(int enterAnim, int exi
 所以这两个参数的对象是两个<code>Activity</code>。如果上面两个参数没有动画要设置，则用0作为参数。</p>
 <p>如果是单纯的只指定一个进入或者离开动画的话，用0作为没有动画的参数可能有问题，这时候需要单独写一个<code>keep</code>动画，例子如下：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">translate</span></span></div><div class="line">    <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></div><div class="line">    <span class="attr">android:duration</span>=<span class="string">"动画时长"</span></div><div class="line">    <span class="attr">android:fromYDelta</span>=<span class="string">"0"</span></div><div class="line">    <span class="attr">android:toYDelta</span>=<span class="string">"0"</span>/&gt;</div></pre></td></tr></table></figure>
-<h2 id="fragment-转场动画"><a class="header-anchor" href="#fragment-转场动画">¶</a>Fragment 转场动画</h2>
+<h2 id="fragment-转场动画">Fragment 转场动画</h2>
 <ul>
 <li>标准的转场动画</li>
 </ul>
@@ -445,7 +455,7 @@ Activity转场动画是是通过overridePendingTransition(int enterAnim, int exi
 <p><code>popEnter</code>-当调用<code>addToBackStack()</code>方法后，当前的<code>Fragment</code>退出返回上一个<code>Fragment</code>，上一个<code>Fragment</code>就是<code>popEnter</code>，这时候它就会执行这个动画。这个动画对于新创建的<code>Fragment</code>无效。</p>
 <p><code>popExit</code>-当前<code>Fragment</code>在<code>back stack</code>中，并且出栈的时候会执行<code>popExit</code>动画。</p>
 <p><strong>对于使用属性动画的Fragment，动画资源需要放到<code>res/animator</code>目录下。使用View动画的，动画资源直接放到<code>res/anim</code>下就可以。</strong></p>
-<h2 id="事例"><a class="header-anchor" href="#事例">¶</a>事例</h2>
+<h2 id="事例">事例</h2>
 <ul>
 <li>使用自定义动画</li>
 </ul>
@@ -454,7 +464,7 @@ Activity转场动画是是通过overridePendingTransition(int enterAnim, int exi
 <li>使用标准动画</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">getSupportFragmentManager().beginTransaction()</div><div class="line">        .replace(getFragmentId(), fragment,fragment.getClass().getSimpleName())</div><div class="line">        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)</div><div class="line">        .addToBackStack(fragment.getClass().getSimpleName())</div><div class="line">        .commit();</div></pre></td></tr></table></figure>
-<h2 id="参考"><a class="header-anchor" href="#参考">¶</a>参考</h2>
+<h2 id="参考">参考</h2>
 <blockquote>
 <p><a href="http://www.cnblogs.com/mengdd/p/3494041.html" target="_blank" rel="external">Android Activity和Fragment的转场动画</a></p>
 </blockquote>
@@ -597,10 +607,10 @@ Activity转场动画是是通过overridePendingTransition(int enterAnim, int exi
 
           
             <div class="site-state-item site-state-categories">
-              
-                <span class="site-state-item-count">4</span>
+              <a href="/categories">
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
-              
+              </a>
             </div>
           
 
@@ -671,7 +681,7 @@ Activity转场动画是是通过overridePendingTransition(int enterAnim, int exi
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#activity-转场动画"><span class="nav-number">1.</span> <span class="nav-text">¶Activity 转场动画</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fragment-转场动画"><span class="nav-number">2.</span> <span class="nav-text">¶Fragment 转场动画</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事例"><span class="nav-number">3.</span> <span class="nav-text">¶事例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">¶参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#activity-转场动画"><span class="nav-number">1.</span> <span class="nav-text">Activity 转场动画</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fragment-转场动画"><span class="nav-number">2.</span> <span class="nav-text">Fragment 转场动画</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事例"><span class="nav-number">3.</span> <span class="nav-text">事例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>

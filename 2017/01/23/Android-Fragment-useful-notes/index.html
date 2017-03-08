@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="Yohan's chat">
 <meta property="og:description" content="Fragment常见知识点整理。">
 <meta property="og:image" content="https://developer.android.google.cn/images/fragment_lifecycle.png">
-<meta property="og:updated_time" content="2017-01-23T07:55:11.000Z">
+<meta property="og:updated_time" content="2017-03-08T04:01:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Fragment 知识点">
 <meta name="twitter:description" content="Fragment常见知识点整理。">
@@ -214,6 +214,16 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
           </a>
         </li>
       
@@ -413,26 +423,26 @@
       
         <p><code>Fragment</code>常见知识点整理。</p>
 <a id="more"></a>
-<h2 id="fragment生命周期"><a class="header-anchor" href="#fragment生命周期">¶</a>Fragment生命周期</h2>
+<h2 id="fragment生命周期">Fragment生命周期</h2>
 <p><img src="https://developer.android.google.cn/images/fragment_lifecycle.png" alt="image"></p>
-<h2 id="创建fragment"><a class="header-anchor" href="#创建fragment">¶</a>创建Fragment</h2>
+<h2 id="创建fragment">创建Fragment</h2>
 <p>创建<code>Fragment</code>一般有两种方式，在xml中定义和动态创建，我们通常使用动态创建的方式。并且传参是通过<code>setArguments()</code>来完成，这样在应用重启时可以通过<code>savedInstanceState</code>获取完整的参数值。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> xxxFragment <span class="title">newInstance</span><span class="params">(String arg)</span> </span>&#123;</div><div class="line">    Bundle args = <span class="keyword">new</span> Bundle();</div><div class="line">    args.putString(ARG, arg);</div><div class="line">    xxxFragment fragment = <span class="keyword">new</span> xxxFragment();</div><div class="line">    fragment.setArguments(args);</div><div class="line">    <span class="keyword">return</span> fragment;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="在fragment中获取宿主activity"><a class="header-anchor" href="#在fragment中获取宿主activity">¶</a>在<code>Fragment</code>中获取宿主<code>Activity</code></h2>
+<h2 id="在fragment中获取宿主activity">在<code>Fragment</code>中获取宿主<code>Activity</code></h2>
 <p>通常情况下我们会通过getActivity()来获取宿主<code>Activity</code>，但是某些情况下这个方法会返回<code>null</code>，所以兼容的方法就是在<code>onAttach()</code>方法中赋值然后获取。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAttach</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">    <span class="keyword">super</span>.onAttach(context);</div><div class="line">    mAcivity = (Activity) context;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="back-stack对fragment生命周期的影响"><a class="header-anchor" href="#back-stack对fragment生命周期的影响">¶</a><code>back stack</code>对Fragment生命周期的影响</h2>
+<h2 id="back-stack对fragment生命周期的影响"><code>back stack</code>对Fragment生命周期的影响</h2>
 <ul>
 <li>没有加入后退栈的<code>Fragment</code>在<code>remove</code>或者被<code>replace</code>的时候会完整的走完生命周期直到<code>onDetach()</code>。</li>
 <li>加入后退栈的<code>Fragment</code>在<code>remove</code>或者<code>replace</code>的时候只会走到<code>onDestoryView()</code>，当<code>popEnter</code>的时候会从<code>onCreateView()</code>走到<code>onResume</code>。</li>
 </ul>
-<h2 id="hide-show方法的特别之处"><a class="header-anchor" href="#hide-show方法的特别之处">¶</a><code>hide</code>，<code>show</code>方法的特别之处</h2>
+<h2 id="hide-show方法的特别之处"><code>hide</code>，<code>show</code>方法的特别之处</h2>
 <ul>
 <li><code>hide</code>和<code>show</code>方法不会触发<code>Fragment</code>生命周期的变化，只会触发<code>onHiddenChanged()</code>方法。</li>
 <li>创建<code>Fragment</code>不会触发<code>onHiddenChanged()</code>方法。</li>
 <li>只有已经存在的<code>Fragment</code>才能调用<code>hide</code>，<code>show</code>方法。</li>
 </ul>
-<h2 id="其他注意事项"><a class="header-anchor" href="#其他注意事项">¶</a>其他注意事项</h2>
+<h2 id="其他注意事项">其他注意事项</h2>
 <ul>
 <li>当<code>Fragment</code>只调用<code>add</code>没有调用<code>remove</code>或者<code>replace</code>的时候，如果这时候宿主<code>Activity</code>生命周期变化的话，其中所有<code>add</code>进来的<code>Fragment</code>的生命周期都会相应的变化，<code>Activity#onStop()</code>的时候<code>Fragment#onStop()</code>也会执行，其他生命周期类似。<strong>需要注意的是<code>Fragment</code>执行的顺序是按照<code>add</code>进去的顺序执行的。</strong></li>
 </ul>
@@ -579,10 +589,10 @@
 
           
             <div class="site-state-item site-state-categories">
-              
-                <span class="site-state-item-count">4</span>
+              <a href="/categories">
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
-              
+              </a>
             </div>
           
 
@@ -653,7 +663,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#fragment生命周期"><span class="nav-number">1.</span> <span class="nav-text">¶Fragment生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建fragment"><span class="nav-number">2.</span> <span class="nav-text">¶创建Fragment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在fragment中获取宿主activity"><span class="nav-number">3.</span> <span class="nav-text">¶在Fragment中获取宿主Activity</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#back-stack对fragment生命周期的影响"><span class="nav-number">4.</span> <span class="nav-text">¶back stack对Fragment生命周期的影响</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hide-show方法的特别之处"><span class="nav-number">5.</span> <span class="nav-text">¶hide，show方法的特别之处</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他注意事项"><span class="nav-number">6.</span> <span class="nav-text">¶其他注意事项</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#fragment生命周期"><span class="nav-number">1.</span> <span class="nav-text">Fragment生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建fragment"><span class="nav-number">2.</span> <span class="nav-text">创建Fragment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在fragment中获取宿主activity"><span class="nav-number">3.</span> <span class="nav-text">在Fragment中获取宿主Activity</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#back-stack对fragment生命周期的影响"><span class="nav-number">4.</span> <span class="nav-text">back stack对Fragment生命周期的影响</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hide-show方法的特别之处"><span class="nav-number">5.</span> <span class="nav-text">hide，show方法的特别之处</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他注意事项"><span class="nav-number">6.</span> <span class="nav-text">其他注意事项</span></a></li></ol></div>
             
 
           </div>

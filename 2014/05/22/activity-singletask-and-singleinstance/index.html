@@ -218,6 +218,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
@@ -415,12 +425,12 @@
 <a id="more"></a>
 <p>之前对启动模式的了解大都是通过别人的博客，看了一些而且还转载了一些，博客确实写的图文并茂、绘声绘色，但毕竟是别人的东西，难免理解上会有偏差，所以再次读了一遍官方文档后，发现可能没有之前想的那么复杂，如下：</p>
 <p>官方对于<code>singleTask</code>和<code>singleInstance</code>的定义是：</p>
-<h1>singleTask：</h1>
+<h1 id="singletask：">singleTask：</h1>
 <p>被指定这个启动模式的<code>Activity</code>，系统创建它的时候会在一个新的<code>task</code>的底部实例化它。但是，如果这个<code>Activity</code>的实例已经存在于其他<code>task</code>中的话，系统会调用<code>onNewIntent()</code>方法并且找到<code>task</code>中已经存在的<code>Activity</code>实例。在同一时间只能存在一个<code>Activity</code>的实例。</p>
 <blockquote>
 <p>要注意的是尽管<code>Activity</code>启动了一个新的<code>task</code>，但是用户点击后退键之后还是会回到之前的<code>Activity</code>。</p>
 </blockquote>
-<h1>singleInstance：</h1>
+<h1 id="singleinstance：">singleInstance：</h1>
 <p>这个启动模式和<code>singleTask</code>类似，但是不同的是，所有指定这个启动模式的<code>Activity</code>除了具有<code>singleTask</code>的特点之外还有就是每个<code>task</code>中只能存在一个<code>Activity</code>的实例，也就是说每个<code>Activity</code>的实例都是唯一的，而且每个<code>task</code>中有且只有一个<code>Activity</code>的实例。</p>
 <p>对于上面两个启动模式，理解他们之前首先要理解<code>task</code>这个概念。官方文档上是这么说的：</p>
 <blockquote>
@@ -570,10 +580,10 @@
 
           
             <div class="site-state-item site-state-categories">
-              
-                <span class="site-state-item-count">4</span>
+              <a href="/categories">
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
-              
+              </a>
             </div>
           
 
@@ -644,7 +654,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">singleTask：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">singleInstance：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#singletask："><span class="nav-number">1.</span> <span class="nav-text">singleTask：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#singleinstance："><span class="nav-number">2.</span> <span class="nav-text">singleInstance：</span></a></li></ol></div>
             
 
           </div>
