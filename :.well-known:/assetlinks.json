@@ -1,0 +1,8 @@
+[{
+	"relation": ["delegate_permission/common.handle_all_urls"],
+	"target": {
+		"namespace": "android_app",
+		"package_name": "com.baidu.searchbox",
+		"sha256_cert_fingerprints": ["78:3A:69:D3:03:8B:01:60:69:AF:DB:12:69:E4:4E:10:8E:B2:47:8C:1C:62:DB:5C:1A:71:C2:36:7B:2C:C2:60"]
+	}
+}]
